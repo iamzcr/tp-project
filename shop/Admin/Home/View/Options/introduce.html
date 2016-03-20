@@ -1,0 +1,27 @@
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">商城介绍</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-9">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form role="form" method="post">
+                        <div class="form-group">
+                            <label>摘要</label>
+                            <textarea class="form-control" rows="5" cols="4" name="deep[summary]"><{$deep_summary}></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>详细介绍</label>
+
+                            <textarea   id = "container" name="deep[content]"><{$deep_content}></textarea>
+                        </div>
+                        <input type="submit" class="btn btn-default" value="保存">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

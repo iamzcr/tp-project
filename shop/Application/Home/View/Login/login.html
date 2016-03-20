@@ -1,0 +1,36 @@
+<section id="form"><!--form-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="login-form"><!--login form-->
+                    <h2>登录你的账户</h2>
+                    <form action="<{:U('Login/do_login/')}>" method="post">
+                        <input name="login[email]" type="text" placeholder="邮箱" />
+                        <input name="login[password]"  type="password" placeholder="密码" />
+							<span>
+								<input name="login[remember]" type="checkbox" class="checkbox">
+								记住登录信息
+							</span>
+                        <input type="submit" class="btn btn-default" value="登录"/>
+                    </form>
+                </div><!--/login form-->
+            </div>
+            <div class="col-sm-1">
+                <h2 class="or">或者</h2>
+            </div>
+            <div class="col-sm-4">
+                <div class="signup-form"><!--sign up form-->
+                    <h2>注册一个新账户</h2>
+                    <form action="<{:U('Login/register/')}>" method="post">
+                        <input name="register[username]" type="text" placeholder="用户名"/>
+                        <input name="register[email]" type="email" placeholder="邮箱"/>
+                        <input name="register[phone]" type="text" placeholder="电话"/>
+                        <input name="register[password]" type="password" placeholder="密码"/>
+                        <input name="register[repassword]" type="password" placeholder="确认密码"/>
+                        <input type="submit" class="btn btn-default" value="注册"/>
+                    </form>
+                </div><!--/sign up form-->
+            </div>
+        </div>
+    </div>
+</section><!--/form-->

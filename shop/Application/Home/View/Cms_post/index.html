@@ -1,0 +1,47 @@
+<section>
+<div class="container">
+<div class="row">
+<div class="col-sm-3">
+    <include file="Public/left" />
+</div>
+<div class="col-sm-9">
+    <div class="blog-post-area">
+        <h2 class="title text-center">最新动态</h2>
+        <volist name="post_data" id="posts">
+        <div class="single-blog-post">
+            <h3><{$posts.title}></h3>
+            <div class="post-meta">
+                <ul>
+                    <li><i class="fa fa-user"></i> Mac Doe</li>
+                    <li><i class="fa fa-clock-o"></i> <{$posts.create_time|date="H:s:m",###}></li>
+                    <li><i class="fa fa-calendar"></i> <{$posts.create_time|date="Y-m-d",###}></li>
+                </ul>
+								<span>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star"></i>
+									<i class="fa fa-star-half-o"></i>
+								</span>
+            </div>
+            <a href="<{:U('CmsPost/single',array('post_id'=>$posts['post_id']))}>">
+                <img src="__PUBLIC__/Uploads/cms/<{$posts.image}>" alt="">
+            </a>
+            <p><{$posts.summary}></p>
+            <a  class="btn btn-primary" href="<{:U('CmsPost/single',array('post_id'=>$posts['post_id']))}>">阅读更多</a>
+        </div>
+        </volist>
+
+        <!--<div class="pagination-area">-->
+            <!--<ul class="pagination">-->
+                <!--<li><a href="" class="active">1</a></li>-->
+                <!--<li><a href="">2</a></li>-->
+                <!--<li><a href="">3</a></li>-->
+                <!--<li><a href=""><i class="fa fa-angle-double-right"></i></a></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    </div>
+</div>
+</div>
+</div>
+</section>

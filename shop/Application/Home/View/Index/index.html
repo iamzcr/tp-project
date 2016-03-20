@@ -1,0 +1,156 @@
+<section id="slider"><!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider-carousel" data-slide-to="1"></li>
+                        <li data-target="#slider-carousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="col-sm-6">
+                                <h1><span>D</span>eep_shop</h1>
+                                <h2>完美的商场系统网站</h2>
+                                <p>Deep_shop是一款由深谊网络开发的一款开源的，提供免费学习的电子商务网站系统，集成了多种功能，致力于提供对中小企业电子商务网站建设的帮助。</p>
+                                <button type="button" class="btn btn-default get">获取源码</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="__PUBLIC__/Home/images/home/girl1.jpg" class="girl img-responsive" alt="" />
+                                <img src="__PUBLIC__/Home/images/home/pricing.png"  class="pricing" alt="" />
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-sm-6">
+                                <h1><span>D</span>eep_shop</h1>
+                                <h2>100% 响应式设计</h2>
+                                <p>Deep_shop是一款由深谊网络开发的一款开源的，提供免费学习的电子商务网站系统，集成了多种功能，致力于提供对中小企业电子商务网站建设的帮助。 </p>
+                                <button type="button" class="btn btn-default get">获取源码</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="__PUBLIC__/Home/images/home/girl2.jpg" class="girl img-responsive" alt="" />
+                                <img src="__PUBLIC__/Home/images/home/pricing.png"  class="pricing" alt="" />
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="col-sm-6">
+                                <h1><span>D</span>eep_shop</h1>
+                                <h2>深谊网络制造</h2>
+                                <p>Deep_shop是一款由深谊网络开发的一款开源的，提供免费学习的电子商务网站系统，集成了多种功能，致力于提供对中小企业电子商务网站建设的帮助。 </p>
+                                <button type="button" class="btn btn-default get">获取源码</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="__PUBLIC__/Home/images/home/girl3.jpg" class="girl img-responsive" alt="" />
+                                <img src="__PUBLIC__/Home/images/home/pricing.png" class="pricing" alt="" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section><!--/slider-->
+
+<section>
+<div class="container">
+<div class="row">
+<div class="col-sm-3">
+    <include file="Public/left" />
+</div>
+
+<div class="col-sm-9 padding-right">
+<div class="features_items"><!--features_items-->
+    <h2 class="title text-center">新产品</h2>
+    <volist name="features_list" id="features" >
+        <div class="col-sm-4">
+            <div class="product-image-wrapper">
+                <div class="single-products">
+                    <div class="productinfo text-center">
+                        <img src="__PUBLIC__/Uploads/product/<{$features.default_image}>" alt="" />
+                        <h2>￥<{$features.price}></h2>
+                        <p><a href="<{:U('Product/detail',array('product_id'=>$features['product_id']))}>"><{$features.name}></a></p>
+                        <a href="<{:U('Cart/add',array('product_id'=>$features['product_id']))}>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>添加购物车</a>
+                    </div>
+                    <div class="product-overlay">
+                        <div class="overlay-content">
+                            <h2>￥<{$features.price}></h2>
+                            <p><a href="<{:U('Product/detail',array('product_id'=>$features['product_id']))}>"><{$features.name}></a></p>
+                            <a href="<{:U('Cart/add',array('product_id'=>$features['product_id']))}>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>添加购物车</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="choose">
+                    <ul class="nav nav-pills nav-justified">
+                        <li><a href="<{:U('Wish/add',array('type'=>product,'product_id'=>$features['product_id']))}>"><i s="fa fa-plus-square"></i>加入收藏</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </volist>
+</div><!--features_items-->
+
+<div class="recommended_items"><!--recommended_items-->
+    <h2 class="title text-center">推荐产品</h2>
+
+    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                <volist name="recommend_list" id="recommend" >
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="__PUBLIC__/Uploads/product/<{$recommend.default_image}>" alt="" />
+                                    <h2>￥<{$recommend.price}></h2>
+                                    <p><a href="<{:U('Product/detail',array('product_id'=>$recommend['product_id']))}>"><{$recommend.name}></a></p>
+                                    <a href="<{:U('Cart/add',array('product_id'=>$recommend['product_id']))}>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>加入购物车</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+            <div class="item">
+                <volist name="recommend_list" id="recommend" >
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="__PUBLIC__/Uploads/product/<{$recommend.default_image}>" alt="" />
+                                    <h2>￥<{$recommend.price}></h2>
+                                    <p><a href="<{:U('Product/detail',array('product_id'=>$recommend['product_id']))}>"><{$recommend.name}></a></p>
+                                    <a href="<{:U('Cart/add',array('product_id'=>$recommend['product_id']))}>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>加入购物车</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+        </div>
+        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</div><!--/recommended_items-->
+
+</div>
+</div>
+</div>
+</section>

@@ -1,0 +1,51 @@
+<div class="left-sidebar">
+    <h2>分类</h2>
+    <div class="panel-group category-products" id="accordian"><!--category-productsr-->
+        <!--<div class="panel panel-default">-->
+            <!--<div class="panel-heading">-->
+                <!--<h4 class="panel-title">-->
+                    <!--<a data-toggle="collapse" data-parent="#accordian" href="#womens">-->
+                        <!--<span class="badge pull-right"><i class="fa fa-plus"></i></span>-->
+                        <!--Womens-->
+                    <!--</a>-->
+                <!--</h4>-->
+            <!--</div>-->
+            <!--<div id="womens" class="panel-collapse collapse">-->
+                <!--<div class="panel-body">-->
+                    <!--<ul>-->
+                        <!--<li><a href="">Fendi</a></li>-->
+                        <!--<li><a href="">Guess</a></li>-->
+                        <!--<li><a href="">Valentino</a></li>-->
+                        <!--<li><a href="">Dior</a></li>-->
+                        <!--<li><a href="">Versace</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <volist name="category" id="category_list" >
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title"><a href="<{:U('Product/category',array('cate_id'=>$category_list['cate_id']))}>"><span class="pull-right">(50)</span><{$category_list['cate_name']}></a></h4>
+                </div>
+            </div>
+        </volist>
+
+
+    </div><!--/category-productsr-->
+
+    <div class="brands_products"><!--brands_products-->
+        <h2>品牌</h2>
+        <div class="brands-name">
+            <ul class="nav nav-pills nav-stacked">
+                <volist name="brand" id="brand_list">
+                    <li><a href="<{:U('Product/brand',array('brand_id'=>$brand_list['brand_id']))}>"> <span class="pull-right">(50)</span><{$brand_list['name']}></a></li>
+                </volist>
+            </ul>
+        </div>
+    </div><!--/brands_products-->
+
+    <div class="shipping text-center"><!--shipping-->
+        <a href="<{$banner_data.link}>"><img src="__PUBLIC__/Uploads/banner/<{$banner_data.images}>" alt="" /></a>
+    </div><!--/shipping-->
+
+</div>

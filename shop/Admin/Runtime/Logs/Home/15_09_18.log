@@ -1,0 +1,388 @@
+[ 2015-09-18T10:48:36+08:00 ] ::1 /deep_shop/admin.php/home/options/service
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000473s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000752s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000919s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000103s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000342s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022937s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023138s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000689s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000886s ]
+
+[ 2015-09-18T10:48:39+08:00 ] ::1 /deep_shop/admin.php/home/login/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000472s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000654s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000783s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000101s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000256s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033305s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033478s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000491s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000620s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000932s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001061s ]
+
+[ 2015-09-18T10:48:41+08:00 ] ::1 /deep_shop/admin.php/home/login/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000516s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000860s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001037s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000094s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000241s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007923s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008059s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000416s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000528s ]
+SQL: SHOW COLUMNS FROM `de_manager` [ RunTime:0.0228s ]
+SQL: SELECT * FROM `de_manager` WHERE ( email='iamzcr@gmail.com' ) LIMIT 1   [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000114s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.042821s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004650s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.038812s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000035s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.043068s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000734s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000848s ]
+
+[ 2015-09-18T10:48:42+08:00 ] ::1 /deep_shop/admin.php/home/index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000475s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000701s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000834s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000278s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000432s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.063500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.063673s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000522s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000642s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000718s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000848s ]
+
+[ 2015-09-18T10:48:46+08:00 ] ::1 /deep_shop/admin.php/home/product/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000463s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000705s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000843s ]
+SQL: SHOW COLUMNS FROM `de_product` [ RunTime:0.0035s ]
+SQL: SELECT * FROM `de_product` WHERE `if_show` = 1  [ RunTime:0.0007s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000158s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000321s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.144607s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.144915s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000817s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001011s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001115s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001317s ]
+
+[ 2015-09-18T10:48:48+08:00 ] ::1 /deep_shop/admin.php/home/product/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000636s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000693s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000832s ]
+SQL: SHOW COLUMNS FROM `de_category` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `de_category` WHERE `if_show` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `de_brand` [ RunTime:0.0026s ]
+SQL: SELECT * FROM `de_brand` WHERE `if_show` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `de_tag` [ RunTime:0.0024s ]
+SQL: SELECT * FROM `de_tag`  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000160s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000304s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.061469s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.061637s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000513s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000628s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000988s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001130s ]
+
+[ 2015-09-18T10:49:25+08:00 ] ::1 /deep_shop/admin.php/home/product/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000510s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000804s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001022s ]
+SQL: SHOW COLUMNS FROM `de_category` [ RunTime:0.0033s ]
+SQL: SELECT * FROM `de_category` WHERE `if_show` = 1  [ RunTime:0.0008s ]
+SQL: SHOW COLUMNS FROM `de_brand` [ RunTime:0.0034s ]
+SQL: SELECT * FROM `de_brand` WHERE `if_show` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `de_tag` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `de_tag`  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000173s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000345s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032303s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032552s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000626s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000795s ]
+NOTIC: [8] Undefined index: tag_ids E:\xampp\htdocs\deep_shop\Admin\Home\Controller\ProductController.class.php 第 32 行.
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+SQL: SHOW COLUMNS FROM `de_product` [ RunTime:0.0036s ]
+SQL: INSERT INTO `de_product` (`name`,`cate_id`,`brand_id`,`input_price`,`market_price`,`price`,`stock`,`description`,`if_features`,`if_recommend`,`if_show`,`create_time`,`default_image`) VALUES ('测试产品1','11','5','444','444','444','99','<p>测试产品1</p><p>测试产品1</p><p>测试产品1</p>','1','1','1','1442544565','1442544565_1249257925.jpg') [ RunTime:0.3261s ]
+SQL: SHOW COLUMNS FROM `de_product_tag_relation` [ RunTime:0.0049s ]
+NOTIC: [2] Invalid argument supplied for foreach() E:\xampp\htdocs\deep_shop\Admin\Home\Controller\ProductController.class.php 第 55 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000156s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.444200s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006764s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.428703s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000073s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.435018s ]
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php:95) E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php 第 91 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php:95) E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php 第 92 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php:95) E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php 第 93 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001484s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001748s ]
+
+[ 2015-09-18T10:49:26+08:00 ] ::1 /deep_shop/admin.php/home/product/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000498s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000869s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001041s ]
+SQL: SHOW COLUMNS FROM `de_product` [ RunTime:0.0034s ]
+SQL: SELECT * FROM `de_product` WHERE `if_show` = 1  [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000221s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000461s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023966s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024115s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000537s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000649s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001050s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001187s ]
+
+[ 2015-09-18T10:49:33+08:00 ] ::1 /deep_shop/admin.php/home/product/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000032s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000508s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001320s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001606s ]
+SQL: SHOW COLUMNS FROM `de_category` [ RunTime:0.0021s ]
+SQL: SELECT * FROM `de_category` WHERE `if_show` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `de_brand` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `de_brand` WHERE `if_show` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `de_tag` [ RunTime:0.0019s ]
+SQL: SELECT * FROM `de_tag`  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000181s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000315s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022889s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023022s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000480s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000621s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001089s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001218s ]
+
+[ 2015-09-18T10:50:29+08:00 ] ::1 /deep_shop/admin.php/home/product/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000435s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000553s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000724s ]
+SQL: SHOW COLUMNS FROM `de_category` [ RunTime:0.0027s ]
+SQL: SELECT * FROM `de_category` WHERE `if_show` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `de_brand` [ RunTime:0.0022s ]
+SQL: SELECT * FROM `de_brand` WHERE `if_show` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `de_tag` [ RunTime:0.0024s ]
+SQL: SELECT * FROM `de_tag`  [ RunTime:0.0005s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000162s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000308s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022606s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022759s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000561s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000678s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+SQL: SHOW COLUMNS FROM `de_product` [ RunTime:0.0029s ]
+SQL: INSERT INTO `de_product` (`name`,`cate_id`,`brand_id`,`input_price`,`market_price`,`price`,`stock`,`description`,`if_features`,`if_recommend`,`if_show`,`create_time`,`default_image`) VALUES ('测试产品3','12','5','5555','666','444','99','<p>测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3</p><p>测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3</p><p>测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3</p><p>测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3</p><p>测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3</p><p><img src=\"/ueditor/php/upload/image/20150918/1442544616798153.png\" title=\"1442544616798153.png\" alt=\"iframe2.png\"/></p><p>测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3测试产品3</p>','1','0','1','1442544629','1442544629_202211247.jpg') [ RunTime:0.0678s ]
+SQL: SHOW COLUMNS FROM `de_product_tag_relation` [ RunTime:0.0045s ]
+SQL: INSERT INTO `de_product_tag_relation` (`product_id`,`tag_id`) VALUES ('16','1') [ RunTime:0.0224s ]
+SQL: INSERT INTO `de_product_tag_relation` (`product_id`,`tag_id`) VALUES ('16','3') [ RunTime:0.0314s ]
+SQL: INSERT INTO `de_product_tag_relation` (`product_id`,`tag_id`) VALUES ('16','4') [ RunTime:0.0238s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000120s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.175884s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005256s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.165463s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000034s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.170212s ]
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php:95) E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php 第 91 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php:95) E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php 第 92 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php:95) E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php 第 93 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000969s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001083s ]
+
+[ 2015-09-18T10:50:30+08:00 ] ::1 /deep_shop/admin.php/home/product/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000047s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000597s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001131s ]
+SQL: SHOW COLUMNS FROM `de_product` [ RunTime:0.0038s ]
+SQL: SELECT * FROM `de_product` WHERE `if_show` = 1  [ RunTime:0.0011s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000142s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000281s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022489s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022609s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000711s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000820s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001176s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001312s ]
+
+[ 2015-09-18T11:01:45+08:00 ] ::1 /deep_shop/admin.php/home/product/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000039s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000767s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001377s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001593s ]
+SQL: SHOW COLUMNS FROM `de_category` [ RunTime:0.0029s ]
+SQL: SELECT * FROM `de_category` WHERE `if_show` = 1  [ RunTime:0.0007s ]
+SQL: SHOW COLUMNS FROM `de_brand` [ RunTime:0.0028s ]
+SQL: SELECT * FROM `de_brand` WHERE `if_show` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `de_tag` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `de_tag`  [ RunTime:0.0003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000160s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000309s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022614s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022760s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000594s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000710s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001041s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001230s ]
+
+[ 2015-09-18T11:02:29+08:00 ] ::1 /deep_shop/admin.php/home/product/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000462s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000757s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000892s ]
+SQL: SHOW COLUMNS FROM `de_category` [ RunTime:0.0025s ]
+SQL: SELECT * FROM `de_category` WHERE `if_show` = 1  [ RunTime:0.0006s ]
+SQL: SHOW COLUMNS FROM `de_brand` [ RunTime:0.0023s ]
+SQL: SELECT * FROM `de_brand` WHERE `if_show` = 1  [ RunTime:0.0004s ]
+SQL: SHOW COLUMNS FROM `de_tag` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `de_tag`  [ RunTime:0.0004s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000166s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000316s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023247s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023387s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000561s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000677s ]
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+SQL: SHOW COLUMNS FROM `de_product` [ RunTime:0.0038s ]
+SQL: INSERT INTO `de_product` (`name`,`cate_id`,`brand_id`,`input_price`,`market_price`,`price`,`stock`,`description`,`if_features`,`if_recommend`,`if_show`,`create_time`,`default_image`) VALUES ('测试产品5','10','4','0.01','0.01','0.01','99','<p>0.01</p><p>0.01</p><p>0.01</p><p>0.01</p><p>0.01</p><p>0.01</p>','1','1','1','1442545348','1442545348_890788881.jpg') [ RunTime:0.0230s ]
+SQL: SHOW COLUMNS FROM `de_product_tag_relation` [ RunTime:0.0040s ]
+SQL: INSERT INTO `de_product_tag_relation` (`product_id`,`tag_id`) VALUES ('17','1') [ RunTime:0.0369s ]
+SQL: INSERT INTO `de_product_tag_relation` (`product_id`,`tag_id`) VALUES ('17','3') [ RunTime:0.0295s ]
+SQL: INSERT INTO `de_product_tag_relation` (`product_id`,`tag_id`) VALUES ('17','4') [ RunTime:0.0237s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000164s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.173073s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004985s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.161812s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000032s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.166294s ]
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php:95) E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php 第 91 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php:95) E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php 第 92 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php:95) E:\xampp\htdocs\deep_shop\ThinkPHP\Library\Think\View.class.php 第 93 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000786s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000902s ]
+
+[ 2015-09-18T11:02:30+08:00 ] ::1 /deep_shop/admin.php/home/product/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000758s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000950s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001158s ]
+SQL: SHOW COLUMNS FROM `de_product` [ RunTime:0.0031s ]
+SQL: SELECT * FROM `de_product` WHERE `if_show` = 1  [ RunTime:0.0008s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000136s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000276s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023963s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024113s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000654s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000766s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001155s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001283s ]
+

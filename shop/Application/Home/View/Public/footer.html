@@ -1,0 +1,74 @@
+<footer id="footer">
+    <div class="footer-widget">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>热门标签</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <volist name="tag" id="tag_list" >
+                                <li><a href="<{:U('Product/tag',array('tag_id'=>$tag_list['tag_id']))}>"><{$tag_list['name']}></a></li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>热门分类</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <volist name="category" id="category_list" >
+                                <li><a href="<{:U('Product/category',array('cate_id'=>$category_list['cate_id']))}>"><{$category_list['cate_name']}></a></li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>热门品牌</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <volist name="brand" id="brand_list" >
+                                <li><a href="<{:U('Product/brand',array('brand_id'=>$brand_list['brand_id']))}>"><{$brand_list['name']}></a></li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>商城地图</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="<{:U('Product/index')}>">产品列表</a></li>
+                            <li><a href="<{:U('CmsPost/index')}>">商城动态</a></li>
+                            <li><a href="<{:U('About/index')}>">关于商城</a></li>
+                            <li><a href="<{:U('Contact/index')}>">联系我们</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-sm-offset-1">
+                    <div class="single-widget">
+                        <h2>关于Deep_shop</h2>
+                            <p class="nav-stacked">Deep_shop是一款有深谊网络开发的一款开源的，提供免费学习的电子商务网站系统，集成了多种功能，致力于提供对中小企业电子商务网站建设的帮助</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <p class="pull-left">Copyright © 2013 Deep_shop Inc. All rights reserved.</p>
+                <p class="pull-right">Designed by <span><a target="_blank" href="http://www.yfcity.net">深谊网络</a></span></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="__PUBLIC__/Home/js/jquery.js"></script>
+<script src="__PUBLIC__/Home/js/bootstrap.min.js"></script>
+<script src="__PUBLIC__/Home/js/jquery.scrollUp.min.js"></script>
+<script src="__PUBLIC__/Home/js/price-range.js"></script>
+<script src="__PUBLIC__/Home/js/jquery.prettyPhoto.js"></script>
+<script src="__PUBLIC__/Home/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="<{:U('Index/index')}>">首页</a></li>
+                <li class="active">订单确认</li>
+            </ol>
+        </div>
+        <div class="heading">
+            <h3>欢迎购物</h3>
+            <p>请确认以下信息准确无误！</p>
+        </div>
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                <tr class="cart_menu">
+                    <td class="image">名称</td>
+                    <td class="image">图片</td>
+                    <td class="description">描述</td>
+                    <td class="price">价钱</td>
+                    <td class="quantity">数量</td>
+                    <td class="total">总额</td>
+                    <td></td>
+                </tr>
+                </thead>
+                <tbody>
+                <empty name="cart_list">
+                    <tr>
+                        <td class="cart_price" colspan="6" >
+                            <p style="text-align: center;margin-top: 20px;">购物车为空</p>
+                        </td>
+                    </tr>
+                    <else />
+                    <volist name="cart_list" id="cart">
+                        <tr>
+                            <td class="cart_price">
+                                <p><{$cart['product_name']}></p>
+                            </td>
+                            <td class="cart_product">
+                                <a href=""><img width="80" src="__PUBLIC__/Uploads/product/<{$cart.image}>" alt=""></a>
+                            </td>
+                            <td class="cart_description">
+                                <h4><a href=""><{$cart['product_name']}></a></h4>
+                                <p>Product ID: <{$cart['product_id']}></p>
+                            </td>
+                            <td class="cart_price">
+                                <p>￥<{$cart['price']}></p>
+                            </td>
+                            <td class="cart_quantity">
+                                <div class="cart_quantity_button">
+                                    <a class="cart_quantity_up" href=""> + </a>
+                                    <input class="cart_quantity_input" type="text" name="quantity" value="<{$cart['quantity']}>" autocomplete="off" size="2">
+                                    <a class="cart_quantity_down" href=""> - </a>
+                                </div>
+                            </td>
+                            <td class="cart_total">
+                                <p class="cart_total_price">$<{$cart['price']}></p>
+                            </td>
+                            <td class="cart_delete">
+                                <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                    </volist>
+                </empty>
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section> <!--/#cart_items-->
+
+<section id="cart_items">
+    <div class="container">
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                <tr class="cart_menu">
+                    <td class="image">姓名</td>
+                    <td class="image">电话</td>
+                    <td class="description">邮箱</td>
+                    <td class="price">地址</td>
+                    <td class="quantity">是否默认</td>
+                    <td>操作</td>
+
+                </tr>
+                </thead>
+                <tbody>
+                <empty name="shipping_list">
+                    <tr>
+                        <td class="cart_price" colspan="6" >
+                            <p style="text-align: center;margin-top: 20px;">
+                                你还没有填写你的地址<br/>
+                                <a class="btn btn-default" href="<{:U('Shipping/add')}>">新增地址</a>
+                            </p>
+                        </td>
+                    </tr>
+                    <else />
+                    <volist name="shipping_list" id="shipping">
+                        <tr>
+                            <td class="cart_price">
+                                <p><{$shipping['name']}></p>
+                            </td>
+                            <td class="cart_price">
+                                <p><{$shipping['phone']}></p>
+                            </td>
+                            <td class="cart_price">
+                                <p><{$shipping['email']}></p>
+                            </td>
+                            <td class="cart_price">
+                                <p><{$shipping['address']}></p>
+                            </td>
+                            <td class="cart_price">
+                                <if condition="($shipping.if_default eq 1)"><p>默认地址</p>
+                                    <else /> <p><a href="<{:U('Shipping/change',array('shipping_id'=>$shipping['shipping_id']))}>">设为默认地址</a></p>
+                                </if>
+                            </td>
+                            <td class="cart_delete">
+                                <a class="cart_quantity_delete" href="<{:U('Shipping/delete',array('shipping_id'=>$shipping['shipping_id']))}>">
+                                    <i class="fa fa-times"></i></a>
+                            </td>
+
+                        </tr>
+                    </volist>
+                </empty>
+                </tbody>
+            </table>
+            <p style="text-align: center;margin-top: 20px;">
+                <a class="btn btn-default" href="<{:U('Shipping/add')}>">新增地址</a>
+            </p>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
+
+<section id="cart_items">
+    <div class="container">
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                <tr class="cart_menu">
+                    <td class="image">产品总价</td>
+                    <td class="image">运费</td>
+                    <td class="description">优惠</td>
+                    <td class="price">总额</td>
+
+                </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td class="cart_price">
+                                <p>￥<{$cart_amount}></p>
+                            </td>
+                            <td class="cart_price">
+                                <p>￥<{$shipping_free}></p>
+                            </td>
+                            <td class="cart_price">
+                                <p>￥<{$coupon}></p>
+                            </td>
+                            <td class="cart_price">
+                                <p>￥<{$amount}></p>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
+<section id="cart_items">
+    <div class="container">
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                <tr class="cart_menu">
+                    <td></td>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td class="cart_price" style="text-align: center">
+                        <a class="btn btn-default update" href="<{:U('Product/index')}>">继续购物</a>
+                        <a class="btn btn-default check_out" href="<{:U('Order/build')}>">提交订单</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section> <!--/#cart_items-->

@@ -1,0 +1,63 @@
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <include file="User/left" />
+            </div>
+            <div class="col-sm-9">
+                <div class="blog-post-area">
+                    <h2 class="title text-center">修改密码</h2>
+                    <div class="single-blog-post">
+                        <section id="cart_items">
+                            <div class="table-responsive cart_info">
+                                <table class="table table-condensed">
+                                    <thead>
+                                    <tr class="cart_menu">
+                                        <td class="image">名称</td>
+                                        <td class="image">图片</td>
+                                        <td class="description">描述</td>
+                                        <td class="price">价钱</td>
+                                        <td>操作</td>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <empty name="list">
+                                        <tr>
+                                            <td class="cart_price" colspan="6" >
+                                                <p style="text-align: center;margin-top: 20px;">收藏为空</p>
+                                            </td>
+                                        </tr>
+                                        <else />
+                                        <volist name="list" id="wish_list">
+                                            <tr>
+                                                <td class="cart_price">
+                                                    <p><{$wish_list['name']}></p>
+                                                </td>
+                                                <td class="cart_product">
+                                                    <a href=""><img style="width: 80px;" src="__PUBLIC__/Uploads/product/<{$wish_list.default_image}>" alt=""></a>
+                                                </td>
+                                                <td class="cart_description">
+                                                    <h4><a href=""><{$wish_list['name']}></a></h4>
+                                                    <p>Product ID: <{$wish_list['product_id']}></p>
+                                                </td>
+                                                <td class="cart_price">
+                                                    <p>￥<{$wish_list['price']}></p>
+                                                </td>
+                                                <td class="cart_delete">
+                                                    <a class="cart_quantity_delete" href="<{:U('Wish/delete',array('product_id'=>$wish_list['product_id']))}>"><i class="fa fa-times"></i></a>
+                                                </td>
+                                            </tr>
+                                        </volist>
+                                    </empty>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section> <!--/#cart_items-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

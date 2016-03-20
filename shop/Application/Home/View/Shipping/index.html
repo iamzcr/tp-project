@@ -1,0 +1,72 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <include file="User/left" />
+            </div>
+            <div class="col-sm-9">
+                <div class="blog-post-area">
+                    <h2 class="title text-center">修改密码</h2>
+                    <div class="single-blog-post">
+                        <section id="cart_items">
+                            <div class="table-responsive cart_info">
+                                <table class="table table-condensed">
+                                    <thead>
+                                    <tr class="cart_menu">
+                                        <td class="image">姓名</td>
+                                        <td class="image">电话</td>
+                                        <td class="description">邮箱</td>
+                                        <td class="price">地址</td>
+                                        <td class="quantity">是否默认</td>
+                                        <td>操作</td>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <empty name="shipping_list">
+                                        <tr>
+                                            <td class="cart_price" colspan="6" >
+                                                <p style="text-align: center;margin-top: 20px;">
+                                                    你还没有填写你的地址<br/>
+                                                    <a class="btn btn-default" href="<{:U('Shipping/add')}>">新增地址</a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                        <else />
+                                        <volist name="shipping_list" id="shipping">
+                                            <tr>
+                                                <td class="cart_price">
+                                                    <p><{$shipping['name']}></p>
+                                                </td>
+                                                <td class="cart_price">
+                                                    <p><{$shipping['phone']}></p>
+                                                </td>
+                                                <td class="cart_price">
+                                                    <p><{$shipping['email']}></p>
+                                                </td>
+                                                <td class="cart_price">
+                                                    <p><{$shipping['address']}></p>
+                                                </td>
+                                                <td class="cart_price">
+                                                    <if condition="($shipping.if_default eq 1)"><p>默认地址</p>
+                                                        <else /> <p><a href="<{:U('Shipping/change',array('shipping_id'=>$shipping['shipping_id']))}>">设为默认地址</a></p>
+                                                    </if>
+                                                </td>
+                                                <td class="cart_delete">
+                                                    <a class="cart_quantity_delete" href="<{:U('Shipping/delete',array('shipping_id'=>$shipping['shipping_id']))}>">
+                                                        <i class="fa fa-times"></i></a>
+                                                </td>
+
+                                            </tr>
+                                        </volist>
+                                    </empty>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </section> <!--/#cart_items-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,54 @@
+<section id="advertisement">
+    <div class="container">
+        <a href="<{$banner_product.link}>"><img src="__PUBLIC__/Uploads/banner/<{$banner_product.images}>" alt="" /></a>
+    </div>
+</section>
+
+<section>
+<div class="container">
+<div class="row">
+    <div class="col-sm-3">
+        <include file="Public/left" />
+    </div>
+
+    <div class="col-sm-9 padding-right">
+        <div class="features_items"><!--features_items-->
+            <h2 class="title text-center">所有产品</h2>
+            <volist name="product_list" id="product" >
+                <div class="col-sm-4">
+                    <div class="product-image-wrapper">
+                        <div class="single-products">
+                            <div class="productinfo text-center">
+                                <img src="__PUBLIC__/Uploads/product/<{$product.default_image}>" alt="" />
+                                <h2>￥<{$product.price}></h2>
+                                <p><a href="<{:U('Product/detail',array('product_id'=>$product['product_id']))}>"><{$product.name}></a></p>
+                                <a href="<{:U('Cart/add',array('product_id'=>$product['product_id']))}>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>加入购物车</a>
+                            </div>
+                            <div class="product-overlay">
+                                <div class="overlay-content">
+                                    <h2>￥<{$product.price}></h2>
+                                    <p><a href="<{:U('Product/detail',array('product_id'=>$product['product_id']))}>"><{$product.name}></a></p>
+                                    <a href="<{:U('Cart/add',array('product_id'=>$product['product_id']))}>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>加入购物车</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choose">
+                            <ul class="nav nav-pills nav-justified">
+                                <li><a href="<{:U('Wish/add',array('type'=>product,'product_id'=>$product['product_id']))}>"><i s="fa fa-plus-square"></i>加入收藏</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </volist>
+
+        </div><!--features_items-->
+        <!--<ul class="pagination">-->
+            <!--<li class="active"><a href="">1</a></li>-->
+            <!--<li><a href="">2</a></li>-->
+            <!--<li><a href="">3</a></li>-->
+            <!--<li><a href="">&raquo;</a></li>-->
+        <!--</ul>-->
+    </div>
+</div>
+</div>
+</section>

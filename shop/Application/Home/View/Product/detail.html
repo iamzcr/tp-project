@@ -1,0 +1,169 @@
+
+<section>
+<div class="container">
+<div class="row">
+<div class="col-sm-3">
+    <include file="Public/left" />
+</div>
+
+<div class="col-sm-9 padding-right">
+<div class="product-details"><!--product-details-->
+    <div class="col-sm-5">
+        <div class="view-product">
+            <img src="__PUBLIC__/Home/images/product-details/1.jpg" alt="" />
+            <h3>主图</h3>
+        </div>
+        <div id="similar-product" class="carousel slide" data-ride="carousel">
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner">
+                <div class="item active">
+                    <a href=""><img src="__PUBLIC__/Home/images/product-details/similar1.jpg" alt=""></a>
+
+                </div>
+                <div class="item">
+                    <a href=""><img src="__PUBLIC__/Home/images/product-details/similar1.jpg" alt=""></a>
+
+                </div>
+                <div class="item">
+                    <a href=""><img src="__PUBLIC__/Home/images/product-details/similar1.jpg" alt=""></a>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <a class="left item-control" href="#similar-product" data-slide="prev">
+                <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="right item-control" href="#similar-product" data-slide="next">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+
+    </div>
+    <div class="col-sm-7">
+        <div class="product-information"><!--/product-information-->
+            <img src="__PUBLIC__/Home/images/product-details/new.jpg" class="newarrival" alt="" />
+            <h2><{$detail.name}></h2>
+            <img src="__PUBLIC__/Home/images/product-details/rating.png" alt="" />
+								<span>
+									<span>￥<{$detail.price}></span>
+									<label>数量:</label>
+									<input type="text" class="put_input" value="3" />
+									<button type="button" class="btn btn-fefault cart put_cat" data-id = '<{$detail.product_id}>' >
+                                        <i class="fa fa-shopping-cart"></i>
+                                       添加购物车
+                                    </button>
+								</span>
+            <p><b>收藏人气:</b> <{$detail.count_wish}></p>
+            <p><b>所在分类:</b> <{$detail.category_name}></p>
+            <p><b>所属品牌:</b> <{$detail.brand_name}></p>
+            <p><a href="<{:U('Wish/add',array('type'=>product,'product_id'=>$detail['product_id']))}>"><i s="fa fa-plus-square"></i><b>加入收藏</b></a></p>
+            <include file="Public/share" />
+        </div><!--/product-information-->
+    </div>
+</div><!--/product-details-->
+
+<div class="category-tab shop-details-tab"><!--category-tab-->
+    <div class="col-sm-12">
+        <ul class="nav nav-tabs">
+            <li><a href="#details" data-toggle="tab">详情</a></li>
+            <li class="active"><a href="#reviews" data-toggle="tab">留言</a></li>
+        </ul>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade" id="details" >
+            <{$detail.description}>
+        </div>
+
+        <div class="tab-pane fade active in" id="reviews" >
+            <div class="col-sm-12">
+                <p><b>对此产品的意见</b></p>
+
+                <form action="#">
+										<span>
+											<input type="text" placeholder="昵称"/>
+											<input type="email" placeholder="邮箱"/>
+										</span>
+                    <textarea name="" ></textarea>
+                    <b>星级评价: </b> <img src="__PUBLIC__/Home/images/product-details/rating.png" alt="" />
+                    <button type="button" class="btn btn-default pull-right">
+                        提交
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div><!--/category-tab-->
+
+<div class="recommended_items"><!--recommended_items-->
+    <h2 class="title text-center">相关产品</h2>
+
+    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="item active">
+                <volist name="recommend_list" id="recommend" >
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="__PUBLIC__/Uploads/product/<{$recommend.default_image}>" alt="" />
+                                    <h2>￥<{$recommend.price}></h2>
+                                    <p><a href="<{:U('Product/detail',array('product_id'=>$product['product_id']))}>"><{$recommend.name}></a></p>
+                                    <a href="<{:U('Cart/add',array('product_id'=>$recommend['product_id']))}>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>加入购物车</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+            <div class="item">
+                <volist name="recommend_list" id="recommend" >
+                    <div class="col-sm-4">
+                        <div class="product-image-wrapper">
+                            <div class="single-products">
+                                <div class="productinfo text-center">
+                                    <img src="__PUBLIC__/Uploads/product/<{$recommend.default_image}>" alt="" />
+                                    <h2>￥<{$recommend.price}></h2>
+                                    <p><a href="<{:U('Product/detail',array('product_id'=>$product['product_id']))}>"><{$recommend.name}></a></p>
+                                    <a href="<{:U('Cart/add',array('product_id'=>$recommend['product_id']))}>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>加入购物车</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </volist>
+            </div>
+
+        </div>
+        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</div><!--/recommended_items-->
+
+</div>
+</div>
+</div>
+</section>
+<script src="__PUBLIC__/Home/js/jquery.js"></script>
+        <script type="text/javascript">
+            $('.put_cat').click(function(){
+                var product_id = this.getAttribute("data-id");
+                var cart_count = $('.put_input').val();
+                var path = "<{:U('cart/put')}>";
+
+                $.post(path,{product_id:product_id,cart_count:cart_count},function(data){
+                    if(data.status == 1){
+                        alert(data.info);
+                        window.location.replace(data.url);
+                    }else{
+                        alert(data.info);
+                    }
+                });
+            })
+        </script>

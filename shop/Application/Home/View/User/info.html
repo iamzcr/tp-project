@@ -1,0 +1,51 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <include file="User/left" />
+            </div>
+            <div class="col-sm-9">
+                <div class="blog-post-area">
+                    <h2 class="title text-center">修改信息</h2>
+                    <div class="single-blog-post">
+                        <section id="cart_items">
+                            <div class="container">
+
+                                <form id="main-contact-form" class="contact-form row" method="post" action="<{:U('User/do_info/')}>" name="contact-form">
+                                    <div class="form-group col-md-9">
+                                        <div class="col-sm-2">
+                                            用户名：
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="info[username]" class="form-control" placeholder="用户名">
+                                         </div>
+                                    </div>
+                                    <div class="form-group col-md-9">
+                                        <div class="col-sm-2">
+                                            邮箱：
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="info[email]" class="form-control" placeholder="邮箱">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-9">
+                                        <div class="col-sm-2">
+                                            电话：
+                                        </div>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="info[phone]" class="form-control" placeholder="电话">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-9">
+                                        <input type="submit" class="btn" value="保存">
+                                    </div>
+                                </form>
+
+                            </div>
+                        </section> <!--/#cart_items-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

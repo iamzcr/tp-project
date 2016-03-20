@@ -1,0 +1,63 @@
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">订单列表</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+    </div>
+    <!-- /.row -->
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+
+                    <div class="dataTable_wrapper">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>订单号</th>
+                                <th>总额</th>
+                                <th>运费</th>
+                                <th>运费单号</th>
+                                <th>订单状态（0新建 1等待支付 2已支付<br/> 3已发货 4已完成/已收货 5已取消）</th>
+                                <th>支付状态（0未支付<br/> 1已支付）</th>
+                                <th>支付方式（0未知/未定义<br/> 1支付宝 2微信 3银联 ）</th>
+                                <th>创建时间</th>
+                                <th>更新时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="order_list" id="list" empty="暂时没有数据" >
+                                <tr class="odd gradeX">
+                                    <td><{$list.invoice_number}></td>
+                                    <td><{$list.amount}></td>
+                                    <td><{$list.shipping_fee}></td>
+                                    <td><{$list.delivery_number}></td>
+                                    <td><{$list.status}></td>
+                                    <td><{$list.payment_status}></td>
+                                    <td><{$list.payment_type}></td>
+                                    <td><{$list.created_time|date="Y-m-d",###}></td>
+                                    <td><{$list.updated_time|date="Y-m-d",###}></td>
+                                    <td>
+                                        <a class="btn btn-primary">发货</a>
+                                        <a class="btn btn-danger">详情</a>
+                                    </td>
+                                </tr>
+                            </volist>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->

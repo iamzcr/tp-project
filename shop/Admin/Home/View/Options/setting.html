@@ -1,0 +1,39 @@
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">商城资料</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form role="form" method="post">
+                        <div class="form-group">
+                            <label>商城名字</label>
+                            <input class="form-control" name="deep[name]" type="text" value="<{$deep_name}>">
+                        </div>
+                        <div class="form-group">
+                            <label>电话</label>
+                            <input class="form-control" name="deep[phone]" type="text" value="<{$deep_phone}>">
+                        </div>
+                        <div class="form-group">
+                            <label>传真</label>
+                            <input class="form-control" name="deep[fax]" type="text" value="<{$deep_fax}>">
+                        </div>
+                        <div class="form-group">
+                            <label>邮箱</label>
+                            <input class="form-control" name="deep[email]" type="text" value="<{$deep_email}>">
+
+                        </div>
+                        <div class="form-group">
+                            <label>地址</label>
+                            <textarea class="form-control" rows="5" name="deep[address]"><{$deep_address}></textarea>
+                        </div>
+                        <input type="submit" class="btn btn-default" value="保存">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

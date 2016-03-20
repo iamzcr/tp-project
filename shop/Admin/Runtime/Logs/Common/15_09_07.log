@@ -1,0 +1,12 @@
+[ 2015-09-07T16:27:03+08:00 ] ::1 /deep_shop/admin.php/admin/category/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000030s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000448s ]
+ERR: 无法加载模块:Admin
+
+[ 2015-09-07T16:27:24+08:00 ] ::1 /deep_shop/admin.php/admin/category/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000054s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000834s ]
+ERR: 无法加载模块:Admin
+

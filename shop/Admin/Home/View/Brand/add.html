@@ -1,0 +1,45 @@
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">新增品牌</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form role="form" method="post">
+                        <div class="form-group">
+                            <label>名字</label>
+                            <input class="form-control" name="brand[name]" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label>别名</label>
+                            <input class="form-control"  name="brand[slug]" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label>描述</label>
+                            <textarea class="form-control" rows="5" name="brand[description]"  ></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>状态</label>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="brand[if_show]" id="optionsRadios1" value="1" checked>显示
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="brand[if_show]" id="optionsRadios2" value="0">隐藏
+                                </label>
+                            </div>
+                        </div>
+                        <input type="submit" class="btn btn-default" value="保存">
+                        <a class="btn btn-default" href="<{:U('Brand/index/')}>">返回</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
