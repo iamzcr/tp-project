@@ -1,0 +1,20 @@
+<?php if (!$this->data->isNew()) { ?>
+<div class="filters">
+    <h3>执行过的SQL</h3>
+    <?php var_dump(Test::lastSql()); ?>
+</div>
+<?php } ?>
+<?php
+$this->widget('base/form', array(
+    'columns' => array(
+        'text' => array('text', 'title' => 'Text', 'require' => 1,),
+        'json_src' => array(function($view, $columnId, $columnName, $columnClass, $value){
+            $view->widget('json/extra', array('value' =>  $value, 'key' => $columnName, 'target' => $view->params->target));
+        }, 'title' => 'JSON Column'),
+    ),
+    'prefix' => 'test',
+    'value' => $this->data,
+    'form' => array(
+        'method' => 'post',
+    ),
+));

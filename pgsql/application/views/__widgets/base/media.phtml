@@ -1,0 +1,150 @@
+<?php
+/**
+ * @var $this MST_ActionView
+ */
+/*common*/
+$active = array(
+    'browser' => 'active',
+    'upload' => 'active',
+);
+$error = false;
+$rel_uri = str_replace(HTTP_ENTRY, '', $this->params->uri);
+
+/*upload*/
+if ($this->params->isPost('upload')) {
+    list($status, $_error) = Upload::save($_FILES['upload']);
+    if(!$status) {
+        $error = $_error;
+        $active['browser'] = '';
+    } else {
+        header('Location:'.httpUri(MST_URI::get_current_url()));
+    }
+} else {
+    $target = $this->params->g('del_file', 0);
+    if ($target) {
+        Upload::delete($target);
+        header('Location:'.httpUri(MST_URI::get_current_url(), false, array('del_file' => false)));
+        exit();
+    }
+    $target = $this->params->p('id', 0);
+    if ($target) {
+        $item = Upload::find($target);
+        if (!$item->isNew()) {
+            $item['is_img'] = Upload::is_image($item['type']);
+            ob_clean();
+            echo json_encode($item);
+            exit();
+        }
+    }
+    $scan = $this->params->g('scan', 0);
+    if ($scan) {
+        Upload::scan_upload_dir();
+        header('Location:'.httpUri($this->params->uri, false, array('scan' => false)));
+        exit();
+    }
+    $active['upload'] = '';
+}
+
+/* browser */
+$search_name = $this->params->g('search', false);
+$where = array('1=?', 1);
+if ($search_name) {
+    $where[0] .= " AND `name` like '%{$search_name}%'";
+}
+$list = Upload::find(Upload::ALL, array(
+    'pageSize' => 10,
+    'where' => $where,
+    'order' => 'created_at desc',
+));
+$head = Upload::getGridHeads();
+
+$head['path']['render'] = function($row, $view) {
+    if (Upload::is_image($row['type']))
+        echo '<img src="'.httpUri($row['path'].'.50x50.jpg').'" width="50" alt="'.$row['path'].'" />';
+    else
+        echo '<span class="glyphicon glyphicon-file"></span>';
+};
+?>
+<ul class="nav nav-tabs">
+    <li class="<?php echo $active['browser']; ?>"><a href="#browser" data-toggle="tab">Browser</a></li>
+    <li class="<?php echo $active['upload']; ?>"><a href="#upload" data-toggle="tab">Upload</a></li>
+</ul>
+
+<div class="tab-content media-widget">
+    <div class="tab-pane fade in <?php echo $active['browser']; ?>" id="browser">
+        <div class="filters">
+            <form method="get" action="" class="form-horizontal" role="form">
+                <div class="form-group f-line f-line-even">
+                    <label class="col-sm-1 control-label" for="search">FileName</label>
+                    <div class="col-sm-6 f-body">
+                        <input type="text" name="search" id="search" class="f-text form-control -search" value="<?php echo $search_name; ?>">
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Search" />
+                    <a href="<?php echo httpUri($rel_uri, false, array('scan' => 1)); ?>" class="btn btn-primary">Scan Upload Folder</a>
+                </div>
+            </form>
+        </div>
+        <?php
+        $this->widget('base/grid', array(
+            'data' => $list,
+            'head' => $head,
+            'func' => function(MST_ActionView $view, $row) {
+                    $rel_uri = str_replace(HTTP_ENTRY, '', $view->params->uri);
+                    MST_HTML::linkTo('Select', '#', array('class' => 'btn btn-primary select-btn', 'rel' => $row['id']));
+                    MST_HTML::linkTo('Delete', httpUri($rel_uri, false, array('del_file' => $row['id'])), array('class' => 'btn btn-danger'));
+            },
+        ));
+        ?>
+    </div>
+    <div class="tab-pane fade in <?php echo $active['upload']; ?>" id="upload">
+        <div class="filters">
+        <?php
+        if ($error) {
+            foreach($error as $file => $err) { ?>
+            <div class="alert alert-danger"><?php echo "File '{$file}' upload error, message:{$err}"; ?></div>
+        <?php
+            }
+        } ?>
+        <form method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+            <div class="form-group">
+                <label class="control-label col-sm-2">Upload File</label>
+                <div class="col-sm-6">
+                    <input type="file" name="upload[]" value="" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6 col-sm-offset-2">
+                    <?php $this->validCode('upload', 'input'); ?>
+                    <input type="submit" class="btn btn-primary" value="Upload" />
+                    <input type="button" id="more_btn" class="btn btn-primary" value="More" />
+                </div>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    (function($){
+        $("#more_btn").on('click', function(){
+            var _clone = $("#upload .form-group:first").clone();
+            _clone.insertBefore($("#upload .form-group:last"));
+            return false;
+        });
+        if (window['parent']) {
+            var $pwin = window.parent.jQuery(window.parent.document), $select_btns = $('.select-btn');
+            $select_btns.on('click', function(e){
+                var $this = $(this), $id = $this.attr('rel');
+                $.ajax({
+                    url:'<?php echo $this->params->uri ?>',
+                    data: {id:$id},
+                    dataType: 'json',
+                    method: 'post',
+                    success : function(res) {
+                        $pwin.trigger('media.selected', [res]);
+                    }
+                });
+                return false;
+            });
+        }
+    })(jQuery)
+</script>

@@ -1,0 +1,73 @@
+<?php
+/**
+ * @var $this MST_ActionView
+ */
+$name = isset($name) ? $name : 'files';
+$columnId = isset($id) ? $id : 'files';
+$multiple = isset($multiple) ? $multiple : false;
+?>
+<input type="button" id="<?php echo $columnId; ?>_btn" class="btn btn-primary" data-toggle="modal" data-target=".upload-widget-modal" value="Browse" />
+<div class="<?php echo $columnId; ?>-upload-wrapper"></div>
+<script type="text/javascript">
+    (function($){
+        var $doc = $(document), $upload_btn = $("#<?php echo $columnId; ?>_btn"), $http_entry = '<?php echo httpUri(); ?>';
+        $upload_btn.on("click", function(e){
+            $doc.off('media.selected').on('media.selected', function(e, res){
+                var $wrapper = $('.<?php echo $columnId; ?>-upload-wrapper'), $item_wrapper = $("<div class='col-sm-2 upload-item-wrapper'></div>"), $del_btn = $("<span class='delete'>×</span>");
+                $('.upload-widget-modal').modal('hide');
+                if (res && res['id']) {
+                    <?php if (!$multiple) {?>
+                    $wrapper.empty();
+                    <?php } ?>
+                    $('<input id="upload_'+res['id']+'" type="hidden" name="<?php echo $name; ?>[]" value=\''+JSON.stringify(res)+'\' />').appendTo($item_wrapper);
+                    if (!res['is_img']) {
+                        console.log(res);
+                        $('<span>'+res['name']+'</span>').appendTo($item_wrapper);
+                    } else{
+                        $('<img id="img_'+res['id']+'" width="100" src="'+ $http_entry + res['path']+'.100x100.jpg" />').appendTo($item_wrapper);
+                    }
+
+                    <?php if ($multiple) {?>
+                    $del_btn.clone().appendTo($item_wrapper).on("click", function(){
+                        var $this = $(this);
+                        $this.parent().remove();
+                        return false;
+                    });
+                    <?php } ?>
+
+                    $item_wrapper.appendTo($wrapper);
+                }
+            });
+        });
+    })(jQuery);
+</script>
+<?php
+global $upload_widget_inited;
+if (!$upload_widget_inited) {
+?>
+<div class="modal fade bs-example-modal-lg upload-widget-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myLargeModalLabel">Media Center</h4>
+            </div>
+            <div class="modal-body">
+                <iframe src="<?php echo httpUri('upload/index'); ?>" width="100%" height="350" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    (function($){
+        $('.upload-widget-modal').appendTo($('body'));
+    })(jQuery);
+</script>
+<style type="text/css">
+.upload-item-wrapper { position: relative; }
+.upload-item-wrapper span.delete { position: absolute; top: 0; right: 0; display: block; font-weight: bold; font-size: 20px; color: red; width: 25px; height: 25px; cursor: pointer; }
+</style>
+<?php
+    $upload_widget_inited = true;
+}
+?>

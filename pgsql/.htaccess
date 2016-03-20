@@ -1,0 +1,4 @@
+RewriteEngine On
+# 如果以该目录为根目录，拦截所有的请求到public目录下
+# Janpoem 2010/12/15
+RewriteRule ^(.*)$ public/$1 [NC,L]

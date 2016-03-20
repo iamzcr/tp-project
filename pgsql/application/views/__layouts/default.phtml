@@ -1,0 +1,67 @@
+<?php
+/**
+ *  @var $this MST_ActionView
+ */
+?>
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title><?php echo $this->systemName, ' > ', $this->pageTitle ?></title>
+<link href="<?php echo httpUri('js/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
+<?php
+$this->stylesheet(array('admin.css', 'loading.css'));
+?>
+<script type="text/javascript" src="<?php echo httpUri('js/jquery-1.11.1.min.js') ?>"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript"  src="<?php echo httpUri('js/html5shiv.js') ?>"></script>
+<script type="text/javascript" src="<?php echo httpUri('js/respond.min.js') ?>"></script>
+<![endif]-->
+</head>
+<body class="h100">
+<!--head-->
+<div class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><?php echo $this->systemName; ?></a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <!--nav bar-->
+            <?php $this->widget('top_nav'); ?>
+            <!--user bar-->
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--main-->
+<?php if ($this->pageTitle) { ?>
+<div class="page-title">
+    <div class="container jumbotron">
+        <h4><?php echo $this->pageTitle .' - '.$this->sub_title; ?></h4>
+    </div>
+</div>
+<?php } ?>
+<div class="container <?php echo $this->params->controller; ?>">
+    <?php $this->content(); ?>
+</div>
+<div class="foot"></div>
+<script src="<?php echo httpUri('js/bootstrap/js/bootstrap.min.js') ?>"></script>
+<script src="<?php echo httpUri('js/require-2.1.6.js'); ?>"></script>
+<script type="text/javascript">
+    requirejs.config({
+        baseUrl: "<?php echo httpUri('js/app'); ?>"
+    });
+    require(['app']);
+</script>
+</body>
+</html>

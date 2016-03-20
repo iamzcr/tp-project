@@ -1,0 +1,208 @@
+<?php
+# 声明变量
+if (!isset($data))
+	$data = new MST_DBO_DataSet();
+elseif (is_array($data) && !$data instanceof MST_DBO_DataSet)
+	$data = new MST_DBO_DataSet($data);
+
+if (!isset($head))
+	$head = array();
+
+if (!isset($foot))
+	$foot = array();
+
+$headCount = count($head);
+
+if (!isset($hasCheckbox))
+	$hasCheckbox = false;
+if (!isset($func))
+	$func = null;
+if (!isset($funcText))
+	$funcText = '操作';
+
+if (!isset($options) || !is_array($options))
+	$options = array();
+
+$options = array_merge(array(
+	'border' => 0,
+	'cellpadding' => 0,
+	'cellspacing' => 0,
+	'width' => '100%',
+	'emptyText' => '没有任何内容',
+	'isPage' => true,
+), $options);// modify by rachel.dong
+
+# 补充id
+if (empty($options['id']))
+	$options['id'] = 'datagrid' . rand(1000, 9999);
+# 补充默认styleClass
+if (empty($options['styleClass']))
+	$options['styleClass'] = 'table-grid';
+else
+	$options['styleClass'] .= ' table-grid';
+# 补充分页设置
+if (!isset($options['pager']) || !is_array($options['pager']))
+	$options['pager'] = null;
+# 创建tableId的快捷方式
+$tableId = $options['id'];
+
+$isFunc = false;
+# 检查func
+if (isset($func) && is_callable($func)) {
+	$headCount += 1;
+	$isFunc = true;
+}
+
+if ($hasCheckbox) {
+	$headCount += 1;
+}
+
+?>
+<table
+	id="<?php echo $tableId; ?>"
+	class="table table-bordered table-striped table-hover <?php echo $options['styleClass']; ?>"
+	border="<?php echo $options['border']; ?>"
+	width="<?php echo $options['width']; ?>"
+	cellpadding="<?php echo $options['cellpadding']; ?>"
+	cellspacing="<?php echo $options['cellspacing']; ?>">
+<?php if (!empty($head)) : ?>
+	<thead id="<?php echo $tableId; ?>_head" class="g-head">
+<?php if ($hasCheckbox):?>
+		<th class="cell-checkbox"><input type="checkbox" id="<?php echo $tableId, '_check_all'; ?>" /></th>
+<?php endif;?>
+<?php foreach($head as $field) : ?>
+		<th><?php echo $field['title']; ?></th>
+<?php endforeach; ?>
+<?php if ($isFunc) : ?>
+		<th class="cell-func"><?php echo $funcText;//$options['funcText']; ?></th>
+<?php endif; ?>
+	</thead>
+<?php endif; ?>
+	<tbody id="<?php echo $tableId; ?>_body" class="g-body">
+<?php if (empty($data) || $data->isEmpty()) : // modify by rachel.dong?>
+		<tr class="g-row-odd"><td<?php if ($headCount > 0) echo ' colspan="'.$headCount.'"'; ?>><div class="g-empty"><?php echo $options['emptyText']; ?></div></td></tr>
+<?php else : ?>
+<?php
+$sum = array();
+$count = array();
+$rowNum = 1;
+foreach ($data as $row) :
+	$isOdd = $rowNum % 2 == 1;
+?>
+		<tr class="g-row <?php echo ($isOdd ? 'g-row-odd' : 'g-row-even'); ?>" id="<?php echo $tableId . '_row_' . $rowNum; ?>">
+<?php if ($hasCheckbox):?>
+			<td class="cell-checkbox">
+				<input type="checkbox" class="check-<?php echo $tableId; ?>-row check-row" value="<?php echo $row[$hasCheckbox]; ?>" />
+			</td>
+<?php endif;?>
+<?php foreach ($head as $key => $field) : ?>
+			<td class="g-cell"><?php
+			$str = null;
+			$isHasFoot = isset($foot[$key]);
+			if (isset($head[$key]['render']) && $head[$key]['render'] instanceof Closure) {
+				$str = call_user_func_array($head[$key]['render'], array($row, $this));
+			}
+			else if (isset($row[$key])) {
+				$str = $row[$key];
+			}
+
+			// 表脚汇总
+			if ($isHasFoot) {
+				switch ($foot[$key]['method']) {
+					case 'sum' :
+						if (!isset($sum[$key])) $sum[$key] = 0;
+						$sum[$key] += intval($str);
+						break;
+					case 'count' :
+						if (!isset($count[$key])) $count[$key] = array();
+						if (isset($count[$key][$str])) $count[$key][$str] += 1;
+						else $count[$key][$str] = 0;
+						break;
+				}
+			}
+			
+			if (empty($str) && isset($head[$key]['emptyText'])) {
+				$str = $head[$key]['emptyText'];
+			}
+			else {
+				if (isset($head[$key]['maps'][$str])) {
+					$str = $head[$key]['maps'][$str];
+				}
+				switch (true) {
+					case isset($head[$key]['strWidth']) :
+						$str = MST_String::widthCut($str, $head[$key]['strWidth']);
+						break;
+					case isset($head[$key]['strLength']) :
+						$str = MST_String::cut($str, $head[$key]['strLength']);
+						break;
+					case isset($head[$key]['int2date']) :
+						if ($str != null && $str > 0)
+							$str = Date($head[$key]['int2date'], $str);
+						break;
+					case isset($head[$key]['int2ip']) :
+						if ($str != null && $str != 0)
+							$str = long2ip($str);
+						break;
+					case isset($head[$key]['printf']) :
+						$format = $head[$key]['printf'];
+						if (is_array($format)) {
+							foreach ($format as $rKey => & $rVal) {
+								if (is_numeric($rKey) && isset($row[$rVal])) {
+									$rVal = $row[$rVal];
+								}
+							}
+							$str = call_user_func_array('sprintf', $format);
+						}
+						elseif (is_string($format)) {
+							$str = sprintf($format, $str);
+						}
+				}
+			}
+			if (isset($head[$key]['styleClass']))
+				$str = '<span class="'.$head[$key]['styleClass'].'">'.$str.'</span>';
+			echo $str;
+
+			?></td>
+<?php endforeach; ?>
+<?php if ($isFunc) : ?>
+			<td class="cell-func"><?php call_user_func($func, $this, $row); ?></td>
+<?php endif; ?>
+		</tr>
+<?php
+$rowNum++;
+endforeach;
+?>
+<?php endif; ?>
+	</tbody>
+<?php if (!empty($foot) && !empty($head)) { ?>
+	<tfoot class="g-foot">
+<?php foreach ($head as $key => $field) { ?>
+		<td><?php
+		if (isset($foot[$key])) {
+			if (isset($sum[$key]))
+				echo $sum[$key];
+			else if (isset($count[$key]))
+				echo count($count[$key]);
+		}
+		?></td>
+<?php } ?>
+	</tfoot>
+<?php } ?>
+</table>
+<?php if ($options['isPage']) : ?>
+<div id="<?php echo $tableId, '_pager'; ?>" class="pager"><?php MST_HTML::pagerLink($data); ?></div>
+<?php endif; ?>
+<?php if ($hasCheckbox) : ?>
+<script type="text/javascript">
+(function($) {
+
+$('#<?php echo $tableId, '_check_all'; ?>').on('click', function() {
+	var checkbox = $('#<?php echo $tableId; ?> input.check-<?php echo $tableId; ?>-row'), $this = $(this);
+	if (checkbox.length > 0)
+		checkbox.attr('checked', $this.attr('checked'));
+});
+
+}) ();
+</script>
+<?php endif; ?>
+<!--# Complete By grid.phtml #-->

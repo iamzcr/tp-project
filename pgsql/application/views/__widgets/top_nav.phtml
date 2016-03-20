@@ -1,0 +1,12 @@
+<?php
+/**
+ * @var $this MST_ActionView
+*/
+$active = array();
+$cPath = $this->params->action;
+$active[$cPath] = true;
+?>
+<ul class="nav navbar-nav">
+    <li<?php if (isset($active['index'])) echo ' class="active"'; ?>><a href="<?php echo httpUri('index/index'); ?>">List</a></li>
+    <li<?php if (isset($active['edit'])) echo ' class="active"'; ?>><a href="<?php echo httpUri('index/edit'); ?>">Add</a></li>
+</ul>

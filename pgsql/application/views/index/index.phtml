@@ -1,0 +1,18 @@
+<div class="filters">
+    <h3>执行过的SQL</h3>
+    <?php var_dump(Test::lastSql()); ?>
+</div>
+<?php
+$this->widget('base/grid', array(
+    'data' => $this->list,
+    'head' => array(
+        'id' => array('text', 'title' => 'ID'),
+        'text' => array('text', 'title' => 'Text',),
+        'id_in_json' => array('text', 'title' => 'ID in JSON Column',),
+        'json_src' => array('text', 'title' => 'JSON Column',),
+        'created_at' => array('text', 'title' => 'Created Time', 'int2date' => 'Y-m-d H:i:s'),
+    ),
+    'func' => function($view, $row) {
+        MST_HTML::linkTo('Edit', 'index/edit/'.$row['id'],array('class' => 'btn btn-primary'));
+    },
+));

@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=<?php echo PROJECT_ENCODE; ?>" />
+<title>出错了！</title>
+<style type="text/css">
+body { font-size: 12px; font-family: Arial, serif; background: #eed3d7; margin: 10px; padding: 10px; }
+h1 { font-size: 24px; font-weight: bold; }
+table { width: 100%; border: 1px solid #999999; border-collapse: collapse; }
+.debug { font-size: 12px; line-height: 1.5; }
+.debug th, .debug td { padding: 2px 5px; border: 1px solid #999999; }
+.debug .file { width: 20%; font-weight: bold; }
+.debug .line {  }
+.debug .function { }
+</style>
+</head>
+
+<body>
+<h1><?php echo $this->status; ?> 错误</h1>
+<p><?php echo $this->error; ?></p>
+<a href="#" id="show_debug_trace">调试信息</a>
+<div id="debug_trace" style="display:none;">
+<table class="debug" border="0" cellpadding="1" cellspacing="1">
+<?php
+
+function traceArgs($trace) {
+	if (!empty($trace['args'])) {
+		$args = array();
+		foreach ($trace['args'] as $arg) {
+			switch (true) {
+				case is_string($arg) :
+					$args[] = '<span class="string">\'' . MST_String::cut($arg, 10) . '\'</span>'; 
+
+					break;
+				case is_numeric($arg) :
+					$args[] = $arg;
+					break;
+				case is_array($arg) :
+					$args[] = var_export($arg, 1);
+					break;
+				case is_object($arg) :
+					$args[] = 'new ' . get_class($arg);
+					break;
+			}
+		}
+		echo '(' . implode(', ', $args) . ')';
+	}
+	else {
+		echo '()';
+	}
+}
+
+if ($this->debug) {
+	$len = count($this->debug);
+	while ($len-- > 0) {
+		if ($len == 0) break;
+		$trace = $this->debug[$len];
+?>
+	<tr>
+		<td class="file"><?php
+			if (!empty($trace['file']))
+				echo str_ireplace(PROJECT_ROOT, 'PROJECT_ROOT', $trace['file']);
+		?></td>
+		<td class="line">Line:<?php
+			if (!empty($trace['line']))
+				echo $trace['line'];
+		?></td>
+		<td class="function">
+            <pre>
+		<?php
+		if (isset($trace['class'])) {
+			echo "{$trace['class']}{$trace['type']}{$trace['function']}";
+			traceArgs($trace);
+		}
+		elseif (isset($trace['function'])) {
+			echo "{$trace['function']}";
+			traceArgs($trace);
+		}
+		?>
+                </pre>
+		</td>
+	</tr>
+<?php
+	}
+}
+?>
+</table>
+</div>
+<script type="text/javascript">
+(function(){
+    var btn = document.getElementById('show_debug_trace');
+    var debugTrace = document.getElementById('debug_trace');
+    btn.onclick = function() {
+        debugTrace.style['display'] = debugTrace.style['display'] == 'none' ? '' : 'none';
+    }
+})();
+</script>
+</body>
+</html>

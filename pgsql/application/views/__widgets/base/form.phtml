@@ -1,0 +1,474 @@
+<?php
+/**
+ * @var $this MST_ActionView
+ */
+if (!isset($form) || !is_array($form))
+	$form = array();
+
+if (!isset($isSaved))
+	$isSaved = false;
+
+$form = array_merge(array(
+	'action' => null,
+	'method' => 'post',
+	'isAjax' => false,
+	'isUpload' => false,
+	'submitText' => 'Submit',
+	'headWidth' => 150,
+), $form);
+
+if (isset($value) && is_object($value)) {
+    $model = get_class($value);
+}
+
+if (!isset($prefix) && isset($model))
+	$prefix = (string)$model;
+$prefix = strtolower($prefix);
+
+$formId = $prefix . '_form';
+$formClass = str_replace('_', '-', $prefix);
+$headWidth = isset($headWidth) && is_numeric($headWidth) && $headWidth > 0 ? $headWidth : 150;
+if (isset($value) && $value instanceof MST_DBO) {
+	$errors = $value->getErrors();
+    if (!isset($columns)) {
+        $columns = $value->getFormColumns();
+    }
+} else {
+	$errors = isset($errors) ? $errors : array();
+}
+
+?>
+<form
+	id="<?php echo $formId; ?>"
+	method="<?php echo $form['method']; ?>"
+	action="<?php echo $form['action']; ?>"
+    class="form-horizontal"
+    role="form"
+>
+<?php if (empty($columns)) { ?>
+	<div class="">
+		没有设置Form元件的有效字段！
+	</div>
+<?php } else { ?>
+	<?php if ($isSaved) : ?>
+	<div>
+		保存成功！
+	</div>
+	<?php endif; ?>
+<?php
+$lineNum = 1;
+foreach ($columns as $key => $column) {
+	$columnId = $prefix != null ? strtolower($prefix . '_' . $key) : $key;
+	$columnName = $prefix != null ? strtolower("{$prefix}[{$key}]") : $key;
+	$columnClass = strtolower($prefix . '-' . str_replace('_', '-', $key));
+
+	if (empty($column['label'])) $column['label'] = ucfirst($key);
+	if (!isset($column[0])) continue;
+	if (is_object($column[0]) && $column[0] instanceof Closure) {
+		$editType = 'closure';
+	}
+	else {
+		$editType = strtolower($column[0]);
+	}
+?>
+<?php if ($editType == 'custom') : ?>
+		<div class="form-group">
+			<div class="f-custom <?php echo $columnClass; ?>"><?php if (!empty($column['content'])) echo $column['content']; ?></div>
+		</div>
+<?php elseif ($editType == 'custom_widget') : ?>
+        <div class="form-group">
+			<div class="f-custom <?php echo $columnClass; ?>">
+				<?php $this->widget($column[1], $column[2]); ?>
+			</div>
+        </div>
+<?php elseif ($editType == 'hidden') : ?>
+        <div class="form-group">
+        <input
+			type="hidden"
+			name="<?php echo $columnName; ?>"
+			id="<?php echo $columnId; ?>"
+			value="<?php echo empty($value[$key]) ? (empty($column['default']) ? null : $column['default']) : $value[$key]; ?>"
+		/>
+        </div>
+<?php else :
+	$lineNum++;
+	$lineClass = $lineNum % 2 == 1 ? 'f-line f-line-odd' : 'f-line f-line-even';
+?>
+        <div class="form-group <?php echo $lineClass; if (!empty($errors[$key])) echo ' form-group-error'; ?>">
+			<?php if (!isset($column['nolabel'])) { ?>
+            <label
+                class="col-sm-2 control-label"
+                for="<?php echo $columnId; ?>">
+            <?php echo isset($column['title']) ? $column['title'] : $column['label']; ?>
+            </label><?php } ?>
+			<div class="col-sm-10 f-body">
+<?php
+	switch ($editType) {
+		case 'closure' :
+			call_user_func_array($column[0], array($this, $columnId, $columnName, $columnClass, isset($value[$key]) ? $value[$key] : null));
+			break;
+		case 'text' :
+			$val = null;
+			if (isset($value[$key]))
+				$val = $value[$key];
+			else {
+				if (isset($column['default'])) {
+					if ($column['default'] === 0)
+						$val = 0;
+					else
+						$val = $column['default'];
+				}
+				else
+					$val = null;
+			}
+			if (isset($column['disabled'])) {
+				switch ($column['disabled']) {
+					case 1 :
+?>
+				<input
+					type="text"
+					id="<?php echo $columnId; ?>"
+					class="f-text form-control <?php echo $columnClass; ?> "<?php
+						if (isset($column['maxlength']))
+							echo ' maxlength="'.$column['maxlength'].'"';
+						elseif (isset($column['max']))
+							echo ' maxlength="'.$column['max'].'"';
+					?>
+					value="<?php echo $val; ?>"
+					disabled="disabled"
+				/>
+				<input
+					type="hidden"
+					id="<?php echo $columnId; ?>_hidden"
+					name="<?php echo $columnName; ?>"
+					value="<?php echo $val; ?>"
+					/>
+<?php
+						break;
+					default :
+?>
+				<input
+					type="text"
+					id="<?php echo $columnId; ?>"
+					class="f-text form-control <?php echo $columnClass; ?>"<?php
+						if (isset($column['maxlength']))
+							echo ' maxlength="'.$column['maxlength'].'"';
+						elseif (isset($column['max']))
+							echo ' maxlength="'.$column['max'].'"';
+					?>
+					value="<?php echo $val; ?>"
+					disabled="disabled"
+				/>
+<?php
+						break;
+				}
+			}
+			else {
+?>
+				<input
+					type="text"
+					name="<?php echo $columnName; ?>"
+					id="<?php echo $columnId; ?>"
+					class="f-text form-control <?php echo $columnClass; ?>"<?php
+						if (isset($column['maxlength']))
+							echo ' maxlength="'.$column['maxlength'].'"';
+						elseif (isset($column['max']))
+							echo ' maxlength="'.$column['max'].'"';
+					?>
+					value="<?php echo $val; ?>"
+				/>
+<?php
+			}
+			break;
+		case 'password' :
+			$columnVal = empty($value[$key]) ? (empty($column['default']) ? null : $column['default']) : $value[$key];
+?>
+				<input
+					type="password"
+					name="<?php echo $columnName; ?>"
+					id="<?php echo $columnId; ?>"
+					class="f-text form-control <?php echo $columnClass; ?>"<?php
+						if (isset($column['maxlength']))
+							echo ' maxlength="'.$column['maxlength'].'"';
+						elseif (isset($column['max']))
+							echo ' maxlength="'.$column['max'].'"';
+					?>
+					value="<?php echo (string)$columnVal; ?>"
+				/>
+<?php
+			break;
+		case 'datetime' :
+			$format = empty($column['dateFormat']) ? 'Y-m-d H:i:s' : $column['dateFormat'];
+			$jsFormat = empty($column['jsFormat']) ? 'YYYY-MM-DD HH:mm' : $column['jsFormat'];
+			$pickSize = isset($column['pickSize']) ? intval($column['pickSize']) : 2;
+			$columnVal = empty($value[$key]) ? (empty($column['default']) ? time() : $column['default']) : $value[$key];
+			$isDisabled = !empty($column['disabled']);
+			if ($columnVal > 0) {
+				if (is_numeric($columnVal)) {
+					$dtStr = date($format, $columnVal);
+					$dtVal = $columnVal;
+				}
+				else {
+					$dtStr = $columnVal;
+					$dtVal = MST_String::date2num($columnVal);
+				}
+			}
+			else {
+				$dtStr = 0;
+				$dtVal = 0;
+			}
+
+			if (is_numeric($dtVal) && $dtVal > 0)
+				$dtStr = date($format, $dtVal);
+?>
+            <?php
+            global $loaded_datetimepicker;
+            if (!$loaded_datetimepicker) {
+            ?>
+            <link href="<?php echo httpUri('js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css') ?>" rel="stylesheet">
+            <script src="<?php echo httpUri('js/moment.min.js') ?>"></script>
+            <script src="<?php echo httpUri('js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') ?>"></script>
+            <?php
+                $loaded_datetimepicker = true;
+            }
+            ?>
+				<input
+					type="hidden"
+					name="<?php echo $columnName; ?>"
+					id="<?php echo $columnId; ?>_hidden"
+					value="<?php echo $dtVal; ?>" <?php if ($isDisabled) echo ' disabled="disabled"'; ?>
+				/>
+                <div class='input-group date col-md-3' id='<?php echo $columnId; ?>' data-date-format="<?php echo $jsFormat; ?>">
+                    <input type='text' class="f-text f-dt form-control <?php echo $columnClass; ?>" value="<?php echo $dtStr; ?>" />
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                </div>
+                <script type="text/javascript">
+                (function(){
+                    var $target = $('#<?php echo $columnId; ?>'), $hidden = $('#<?php echo $columnId; ?>_hidden');
+                    $target.datetimepicker();
+                    $target.on('dp.change', function(e){
+                        $hidden.val(Math.round(new Date(e.date).getTime() / 1000));
+                    });
+                    <?php if ($isDisabled) { ?>
+                    $target.data('DateTimePicker').disable();
+                    <?php } ?>
+                })();
+                </script>
+<?php
+			break;
+		case 'textarea' :
+			$columnVal = empty($value[$key]) ? (empty($column['default']) ? null : $column['default']) : $value[$key];
+?>
+			<textarea
+				id="<?php echo $columnId; ?>"
+				name="<?php echo $columnName; ?>"
+				class="f-text f-ta form-control <?php echo $columnClass; ?>"
+			><?php if (isset($columnVal)) echo $columnVal; ?></textarea>
+<?php
+			break;
+		case 'checkbox' :
+			$columnVal = empty($value[$key]) ? null : $value[$key];
+?>
+            <div class="checkbox">
+			<input type="hidden" name="<?php echo $columnName; ?>" value="0" />
+			<input
+				type="checkbox"
+				id="<?php echo $columnId; ?>"
+				name="<?php echo $columnName; ?>"
+				class="f-cb f-ta <?php echo $columnClass; ?>"
+				value="1"<?php echo $columnVal == '1' ? ' checked="checked"' : null; ?> />
+            </div>
+<?php
+			break;
+		case 'tinymce' :
+			$columnVal = empty($value[$key]) ? (empty($column[$key]) ? null : $column[$key]) : $value[$key];
+			$lang = PROJECT_LANG;
+			$lang = 'zh';
+
+            global $tinymce_js_loaded;
+?>
+            <?php if (!$tinymce_js_loaded) { ?>
+			<script type="text/javascript" src="<?php echo httpUri('/public/js/tinymce/tinymce.min.js') ?>"></script>
+            <?php
+                $tinymce_js_loaded  = true;
+            }
+            ?>
+			<script type="text/javascript">
+			tinyMCE.init({
+				// General options
+                selector : 'textarea#<?php echo $columnId; ?>',
+                language : 'zh_CN',
+                plugins : ["anchor charmap code contextmenu fullscreen image link lists paste preview searchreplace table textcolor wordcount"],
+                toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | l      ink image | print preview media fullpage | forecolor backcolor emoticons"
+			});
+			</script>
+			<textarea
+				mce_editable="true"
+				id="<?php echo $columnId; ?>"
+				name="<?php echo $columnName; ?>"
+				class="f-text f-ta <?php echo $columnClass; ?>"
+				style="width:100%;"
+			><?php echo $columnVal; ?></textarea>
+<?php
+			break;
+		case 'select':
+			$columnVal = empty($value[$key]) ? (empty($column['default']) ? 0 : $column['default']) : $value[$key];
+			$options = $column['options'];
+			$optionsType = isset($column['optionsType']) ? intval($column['optionsType']) : 0;
+			$isDisabled = !empty($column['disabled']);
+?>
+			<div class="f-select-box">
+				<select
+                    class="form-control"
+					id="<?php echo $columnId; ?>"
+					name="<?php echo $columnName; ?>"<?php if ($isDisabled) echo ' disabled="disabled"'; ?>>
+<?php if (isset($column['firstOption'])) { ?>
+					<option value=""<?php echo ($columnVal == null ? ' selected="selected"' : ''); ?>><?php echo $column['firstOption']; ?></option>
+<?php } ?>
+<?php if (!empty($column['options'])) { ?>
+<?php if ($optionsType == 1) { ?>
+<?php foreach ($options as $option) {
+		$option = array_values((array)$option);
+?>
+					<option value="<?php echo $option[0]; ?>"<?php echo ($columnVal != null && $columnVal == $option[0] ? ' selected="selected"' : ''); ?>><?php echo $option[1]; ?></option>
+<?php } ?>
+<?php } else { ?>
+<?php foreach ($options as $oVal => $oTxt) { ?>
+					<option value="<?php echo $oVal; ?>"<?php echo ($columnVal != null && $columnVal == $oVal ? ' selected="selected"' : ''); ?>><?php echo $oTxt; ?></option>
+<?php } ?>
+<?php } ?>
+<?php } ?>
+				</select>
+			</div>
+<?php
+			break;
+		case 'checkboxgroup':
+			$defaultVal = (empty($column['default']) ? null : $column['default']);
+			$columnVal = empty($value[$key]) ? $defaultVal : $value[$key];
+			if (!empty($column['maps']) && is_array($column['maps']))
+				$data = (array)$column['maps'];
+			else
+				$data = (array)$column['data'];
+			$dataType = isset($column['dataType']) ? intval($column['dataType']) : 0;
+			$separator = isset($column['separator']) ? $column['separator'] : ',';
+			if (is_string($columnVal) && stripos($columnVal, $separator) !== false)
+				$columnVal = explode($separator, $columnVal);
+			$index = 0;
+?>
+					<input type="hidden" name="<?php echo $columnName; ?>" value="" />
+<?php if (!empty($data)) { ?>
+<?php if ($dataType == 1) { ?>
+<?php foreach ($data as $item) {
+	$item = array_values((array)$item);
+?>
+                    <div class="checkbox">
+                    <label for="<?php echo $columnId . "_{$index}"; ?>" class="f-label">
+                    <input type="checkbox" name="<?php echo $columnName . "[{$index}]"; ?>" id="<?php echo $columnId . "_{$index}"; ?>" class="f-checkbox" value="<?php echo $item[0]; ?>"<?php if ($columnVal == $item[0] || (isset($columnVal[$index]) && $columnVal[$index] == $item[0])) echo ' checked="checked"'; ?> />
+                    <?php echo $item[1]; ?>
+                    </label>
+                    </div>
+<?php $index++;} ?>
+<?php } else { ?>
+<?php foreach ($data as $oVal => $oTxt) { ?>
+                    <div class="checkbox">
+                    <label for="<?php echo $columnId . "_{$index}"; ?>" class="f-label">
+                    <input type="checkbox" name="<?php echo $columnName . "[{$index}]"; ?>" id="<?php echo $columnId . "_{$index}"; ?>" class="f-checkbox" value="<?php echo $oVal; ?>"<?php if ($columnVal == $oVal || (isset($columnVal[$index]) && $columnVal[$index] == $oVal)) echo ' checked="checked"'; ?> />
+					<?php echo $oTxt; ?>
+                    </label>
+                    </div>
+<?php $index++;} ?>
+<?php } ?>
+<?php } ?>
+<?php
+			break;
+		case 'radiogroup':
+			$defaultVal = (empty($column['default']) ? null : $column['default']);
+			$columnVal = empty($value[$key]) ? $defaultVal : $value[$key];
+			if (!empty($column['maps']) && is_array($column['maps']))
+				$data = (array)$column['maps'];
+			else
+				$data = (array)$column['data'];
+			$dataType = isset($column['dataType']) ? intval($column['dataType']) : 0;
+			$index = 0;
+?>
+				<div class="f-inline-box">
+					<input type="hidden" name="<?php echo $columnName; ?>" value="<?php echo $columnVal; ?>" />
+<?php if (!empty($data)) { ?>
+<?php if ($dataType == 1) { ?>
+<?php foreach ($data as $item) {
+	$index++;
+	$item = array_values($item->toArray());
+?>
+                    <div class="radio">
+                    <label for="<?php echo $columnId . "_{$index}"; ?>" class="f-label">
+                    <input type="radio"
+                           name="<?php echo $columnName; ?>"
+                           id="<?php echo $columnId . "_{$index}"; ?>"
+                           class="f-radio"
+                           value="<?php echo $item[0]; ?>"<?php if ($columnVal == $item[0]) echo ' checked="checked"'; ?> />
+					<?php echo $item[1]; ?>
+                    </label>
+                    </div>
+<?php } ?>
+<?php } else { ?>
+<?php foreach ($data as $oVal => $oTxt) {
+	$index++;
+?>
+                    <div class="radio">
+                    <label for="<?php echo $columnId . "_{$index}"; ?>" class="f-label">
+                    <input type="radio"
+                           name="<?php echo $columnName; ?>"
+                           id="<?php echo $columnId . "_{$index}"; ?>"
+                           class="f-radio"
+                           value="<?php echo $oVal; ?>"<?php if ($columnVal == $oVal) echo ' checked="checked"'; ?> />
+					<?php echo $oTxt; ?>
+                    </label>
+                    </div>
+<?php } ?>
+<?php } ?>
+<?php } ?>
+				</div>
+<?php
+			break;
+		case 'widget' :
+			$this->widget($column[1], $column[2]);
+			break;
+        case 'upload':
+            $multiple = isset($column['multiple']) && $column['multiple'] ?  $column['multiple'] : false;
+            $this->widget('base/upload', array('name' => $columnName, 'id' => $columnId, 'multiple' => $multiple));
+            break;
+	}
+?>
+<?php if (!empty($column['after'])) { ?>
+				<span class="f-after"><?php echo $column['after']; ?></span>
+<?php } ?>
+<?php if (!empty($errors[$key])) { ?>
+				<div class="f-error" id="<?php echo $columnId . '_tip' ?>"><?php echo $errors[$key]; ?></div>
+<?php } elseif (!empty($column['tip'])) { ?>
+				<div class="f-tip" id="<?php echo $columnId . '_tip' ?>"><?php echo $column['tip']; ?></div>
+<?php } ?>
+			</div>
+<?php endif; ?>
+		</div>
+<?php
+}
+?>
+		<div class="form-group f-submit-line">
+			<div class="col-sm-offset-2 col-sm-10 f-submit">
+<?php if (is_array($form['submitText'])) { ?>
+<?php
+$index = 0;
+foreach ($form['submitText'] as $btnId => $btnText) {
+	$index++;
+?>
+				<input id="<?php echo $formId, '_', $btnId; ?>" class="btn" type="<?php echo $index == 1 ? 'submit' : 'button'; ?>" value="<?php echo $btnText; ?>" />
+<?php } ?>
+<?php } else { ?>
+				<input type="submit" class="btn btn-primary" value="<?php echo $form['submitText']; ?>" />
+<?php } ?>
+				<?php $this->validCode($prefix, 'input'); ?>
+			</div>
+		</div>
+<?php } ?>
+</form>

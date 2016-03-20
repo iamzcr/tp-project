@@ -1,0 +1,23 @@
+@charset "utf-8";
+* { margin: 0; padding: 0; font-family: Arial,Helvetica,sans-serif; }
+
+body { background: #D4D3D3 url(/images/admin2/bg.gif) repeat-x 0 0; color: #333; font: 13px/1.5 Arial,Helvetica,sans-serif; }
+h1, h2, h3, h4, h5, h6 { color: #777; font-weight: bold; }
+a { text-decoration: none; outline: none; color: #555; }
+a:hover { text-decoration: underline; }
+table { border-collapse:collapse; }
+object { outline: none; }
+.il li { list-style: none; float: left; }
+img { border: 0; }
+
+.w960 { width: 960px; }
+
+.l { float: left; }
+.r { float: right; }
+.c { clear: both; height: 0px; overflow: hidden; }
+
+.l-center { margin: 0 auto; }
+.t-center { text-align: center; }
+.t-right {text-align:right; }
+
+.sys-name { color: #FFFFFF; font-size: 28px; font-weight: bold; font-style: italic; font-family: "Trebuchet MS",Arial,Helvetica,sans-serif; }

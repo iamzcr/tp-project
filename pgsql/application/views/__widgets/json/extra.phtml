@@ -1,0 +1,39 @@
+<?php
+$obj = json_decode($value, 1);
+
+if (empty($obj)) {
+    $obj = array();
+}
+?>
+<div id="extra_wrapper">
+    <?php foreach($obj as $k => $row) { ?>
+        <div class="clearfix" data-mvc-action="pgsample/extra_item">
+            <div class="input-group">
+                <span class="input-group-addon">Name:<br /><br />Value:</span>
+                <input type="text" name="<?php echo $key; ?>[name][]" class="form-control" value="<?php echo $k; ?>">
+                <input type="text" name="<?php echo $key; ?>[value][]" id="test_text" class="f-text form-control test-text" value="<?php echo $row; ?>">
+                <a class="input-group-addon add-btn" href="#"><span class="glyphicon glyphicon-plus"></span></a>
+                <a class="input-group-addon sub-btn" href="#"><span class="glyphicon glyphicon-minus"></span></a>
+                <a class="input-group-addon" href="<?php echo httpUri('index/mkindex/'.$target, null, array('name' => $k)); ?>">为此字段<br />创建索引</a>
+            </div>
+            <div>&nbsp;</div>
+        </div>
+    <?php } ?>
+</div>
+<?php if (empty($obj)) { ?>
+<div id="empty_extra_wrapper" data-mvc-action="pgsample/extra_add">
+<a href="#" class="btn btn-default">Add Extra Data</a>
+<script type="text/template">
+    <div class="clearfix" data-mvc-action="pgsample/extra_item">
+        <div class="input-group">
+            <span class="input-group-addon">Name:<br /><br />Value:</span>
+            <input type="text" name="<?php echo $key; ?>[name][]" class="form-control" value="">
+            <input type="text" name="<?php echo $key; ?>[value][]" id="test_text" class="f-text form-control test-text" value="">
+            <a class="input-group-addon add-btn" href="#"><span class="glyphicon glyphicon-plus"></span></a>
+            <a class="input-group-addon sub-btn" href="#"><span class="glyphicon glyphicon-minus"></span></a>
+        </div>
+        <div>&nbsp;</div>
+    </div>
+</script>
+</div>
+<?php } ?>
