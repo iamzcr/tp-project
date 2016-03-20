@@ -1,0 +1,33 @@
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">编辑栏目内容</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-10">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form role="form"  enctype="multipart/form-data">
+                        <input type="hidden" name="content[column_id]" value="<{$record['column_id']}>">
+                        <div class="form-group">
+                            <label>文章标题</label>
+                            <input class="form-control" name="content[title]" type="text" value="<{$record['title']}>">
+                        </div>
+                        <div class="form-group">
+                            <label>文章摘要</label>
+                            <textarea class="form-control"  name="content[summary]" ><{$record['summary']}></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>文章内容</label>
+                            <textarea rows="10" cols="10"  id = "container"  name="content[content]"><{$record['content']}></textarea>
+                        </div>
+                        <button type="button" class="btn btn-success submit" data-url="<{:U('ColumnContent/edit')}>" > 提交</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<load href="__PUBLIC__/Admin/sb-admin/bower_components/jquery/dist/jquery.min.js" />
+<load href="__PUBLIC__/Admin/Js/page/content.js" />

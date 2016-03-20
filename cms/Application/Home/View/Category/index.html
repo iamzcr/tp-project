@@ -1,0 +1,43 @@
+<!---start-content---->
+<div class="content">
+    <!---start-blog-page---->
+    <div class="blog">
+        <div class="wrap">
+
+            <volist name="article_list" id="list" >
+                <div class="blog-leftgrids">
+                    <div class="image group">
+                        <div class="grid images_3_of_1">
+                            <a href="single.html"><img src="__PUBLIC__/Upload/article/<{$list['default_image']}>"></a>
+                            <span><img src="__PUBLIC__/Home/images/lable.png" title="lable"></span>
+                        </div>
+                        <div class="grid span_2_of_3">
+                            <h3><a href="#"><{$list['title']}></a></h3>
+                            <p> <{$list['summary']}> </p>
+                            <div class="button1"><span><a href="<{:U('Article/index',array('article_id'=>$list['article_id']))}>">阅读更多</a></span></div>
+                        </div>
+                    </div>
+                    <div class="artical-links">
+                        <ul>
+                            <li><a href="#"><img src="__PUBLIC__/Home/images/blog-icon1.png" title="date"><span><{$list.create_time|date="Y-m-d",###}></span></a></li>
+
+                            <li><a href="#"><img src="__PUBLIC__/Home/images/blog-icon5.png" title="permalink"><span>permalink</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </volist>
+
+            <div class="blog-bottom-paination">
+                <ul>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <!---End-blog-page---->
+    </div>
+</div>
+<!---End-content----><br /><br />

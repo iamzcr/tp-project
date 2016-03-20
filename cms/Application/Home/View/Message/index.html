@@ -1,0 +1,45 @@
+<!---start-content---->
+<div class="content">
+    <!----start-contact---->
+    <div class="contact">
+        <div class="wrap">
+            <div class="section group">
+                <div class="col span_1_of_3">
+                    <div class="company_address">
+                        <h3>联系我们：</h3>
+                        <p><strong>名 称</strong>: <{$deep_name}></p>
+                        <p><strong>电 话</strong>:  <{$deep_phone}></p>
+                        <p><strong>地 址</strong>:  <{$deep_address}></p>
+                        <p><strong>传 真</strong>:  <{$deep_fax}></p>
+                        <p><strong>邮 箱</strong>:  <{$deep_email}></p>
+                    </div>
+                </div>
+                <div class="col span_2_of_3">
+                    <div class="contact-form">
+                        <h3>给我们留言</h3>
+                        <form method="post" action="contact-post.html">
+                            <div>
+                                <span><label>邮箱</label></span>
+                                <span><input name="message[email]" type="text" class="textbox"></span>
+                            </div>
+                            <div>
+                                <span><label>电话</label></span>
+                                <span><input name="message[mobile]" type="text" class="textbox"></span>
+                            </div>
+                            <div>
+                                <span><label>内容</label></span>
+                                <span><textarea name="message[content]"> </textarea></span>
+                            </div>
+                            <div>
+                                <span><button type="button" class="submit" data-url="<{:U('Message/index')}>"  style="width: 90px;height: 35px;font-size: 16px;"> 提交</button></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----End-contact---->
+</div>
+<div class="clear"> </div>
+<script  type="text/javascript"  src="__PUBLIC__/Home/js/page/message.js"></script>

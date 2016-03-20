@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title><{$deep_title}></title>
+    <link href="__PUBLIC__/Home/css/style.css" rel="stylesheet" type="text/css"  media="all" />
+
+    <link href="__PUBLIC__/Home/css/slider.css" rel="stylesheet" type="text/css"  media="all" />
+    <script  type="text/javascript"  src="__PUBLIC__/Home/js/jquery.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.easing.1.3.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/camera.min.js"></script>
+    <script type="text/javascript">
+        jQuery(function(){
+            jQuery('#camera_wrap_1').camera({
+                height: '500px',
+                pagination: false,
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event){
+                event.preventDefault();
+                $('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="header">
+    <div class="wrap">
+        <div class="logo">
+            <!--<a href="index.html"><img src="__PUBLIC__/Home/images/logo.png" title="logo" /></a>-->
+            <a href="index.html"><img src="__PUBLIC__/Upload/base/<{$deep_logo}>" style="width: 209px;height: 36px;" title="logo" /></a>
+        </div>
+        <div class="top-nav">
+            <ul>
+                <li class="active"><a href="<{:U('/')}>">首页</a></li>
+                <volist name="category_show_list" id="list" >
+                    <li><a href="<{:U('category/index',array('category_id'=>$list['category_id']))}>"><{$list.name}></a></li>
+                </volist>
+                <volist name="column_show_list" id="column_list" >
+                    <li><a href="<{:U('Column/index',array('column_id'=>$column_list['column_id']))}>"><{$column_list.name}></a></li>
+                </volist>
+                <li><a href="<{:U('Message/index')}>">联系我们</a></li>
+                <div class="clear"> </div>
+            </ul>
+        </div>
+        <div class="clear"> </div>
+    </div>
+    <!---End-header---->
+</div>
