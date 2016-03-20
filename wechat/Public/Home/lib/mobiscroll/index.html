@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+    <title>Mobiscroll</title>
+
+    <!-- jQuery Include -->
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <!-- Mobiscroll JS and CSS Includes -->
+    <link href="css/mobiscroll.custom-2.17.0.min.css" rel="stylesheet" type="text/css" />
+    <script src="js/mobiscroll.custom-2.17.0.min.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        /*****************************************************************/
+        /* Demo Page styling, you can ignore this in your implementation */
+        body { margin: 0; padding: 0; font-family: Arial, Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
+        input, select { width: 100%; padding: .625em; margin: 0 0 .625em 0; border: 1px solid #aaa; box-sizing: border-box; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; }
+        .header { padding: .625em; background: #5185a8;}
+        .header h1 { margin: 0; padding: 0; color: #fff; text-align: center; font-size: 1.25em; font-weight: bold; text-shadow: 1px 1px 1px #000; text-overflow: ellipsis; overflow: hidden; white-space: nowrap; }
+        #main, .demo-wrapper { padding: 1em; }
+        button {
+            display: inline-block;
+            text-decoration: none;
+            padding: 0.8em 2.6em;
+            margin: 20px 10px 0 0;
+            outline: 0;
+            border: 0;
+            overflow: visible;
+            cursor: pointer;
+            color: #fff;
+            background: #5185a8;
+            font-family: Arial, sans-serif, verdana;
+            font-size: 14px;
+            font-weight: 100;
+            -webkit-transition: background 0.3s ease-out;
+            -moz-transition: background 0.3s ease-out;
+            -o-transition: background 0.3s ease-out;
+            transition: background 0.3s ease-out;
+        }
+        
+        button:hover {
+            background: #34566d;
+        }
+
+        input {
+            width: 100%;
+            margin: 0 0 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 0;
+            background: #fff;
+            font-family: Arial, sans-serif,verdana;
+            text-shadow: none;
+            color: #000;
+            font-size: 15px;
+            -webkit-appearance: none;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        .demo-iframe { 
+            padding: 10px 10px 10px 10px; 
+            text-shadow: none; 
+        }
+        /* Demo page styling END */
+        /*************************/
+
+    </style>
+
+    <script>
+        // -------------------------------------------------------------------
+        // Demo page code START, you can ignore this in your implementation
+        $(function(){
+            $('#demo,#theme,#display,#lang,#mode').change(reInitialize);
+            reInitialize();
+
+            function reInitialize(){
+                var demo = $('#demo').val();
+
+                // hide all demos
+                $('.demo-wrapper').hide();
+
+                // show current demo
+                var demoContainer = $('.demo-wrapper-'+demo);
+                demoContainer.show();
+
+                // reinitialize demo
+                var initFunction = demo+'Init';
+                window[initFunction]();
+                demoContainer.trigger('mbsc-enhance');
+            }
+        });
+        // Demo page code END
+        // -------------------------------------------------------------------
+
+        /* Basic usage demo script */
+        function selectBasicInit() {
+            $(function () {
+            
+                // Mobiscroll Select initialization
+                $('#selectBasic-demo').mobiscroll().select({
+                    theme: $('#theme').val(),      // Specify theme like: theme: 'ios' or omit setting to use default
+                    lang: $('#language').val(),    // Specify language like: lang: 'pl' or omit setting to use default
+                    display: $('#display').val(),  // Specify display mode like: display: 'bottom' or omit setting to use default
+                    mode: $('#mode').val(),        // More info about mode: http://docs.mobiscroll.com/2-17-0/select#!opt-mode
+                    minWidth: 200                  // More info about minWidth: http://docs.mobiscroll.com/2-17-0/select#!opt-minWidth
+                });
+               
+                $('#selectBasic-show').click(function () {
+                    $('#selectBasic-demo').mobiscroll('show'); 
+                    return false;
+                });
+            
+                $('#selectBasic-clear').click(function () {
+                    $('#selectBasic-demo').mobiscroll('clear');
+                    return false;
+                });
+                
+            });
+        }
+
+        /* Group options demo script */
+        function selectGroupselectInit() {
+            $(function () {
+            
+                // Mobiscroll Select initialization
+                $('#selectGroupselect-demo').mobiscroll().select({
+            	theme: $('#theme').val(),             // Specify theme like: theme: 'ios' or omit setting to use default
+                    lang: $('#language').val(),    // Specify language like: lang: 'pl' or omit setting to use default
+                    display: $('#display').val(),  // Specify display mode like: display: 'bottom' or omit setting to use default
+                    mode: $('#mode').val(),        // More info about mode: http://docs.mobiscroll.com/2-17-0/select#!opt-mode
+                    label: 'City',                 // More info about label: http://docs.mobiscroll.com/2-17-0/select#!opt-label
+                    group: true,                   // More info about group: http://docs.mobiscroll.com/2-17-0/select#!opt-group
+                    groupLabel: 'Country',         // More info about groupLabel: http://docs.mobiscroll.com/2-17-0/select#!opt-groupLabel
+                    fixedWidth: [100, 170]         // More info about fixedWidth: http://docs.mobiscroll.com/2-17-0/select#!opt-fixedWidth		
+                });
+                
+                $('#selectGroupselect-show').click(function () {
+                    $('#selectGroupselect-demo').mobiscroll('show');
+                    return false;
+                });
+            
+                $('#selectGroupselect-clear').click(function () {
+                    $('#selectGroupselect-demo').mobiscroll('clear');
+                    return false;
+                });
+                
+            });
+        }
+
+        /* Multiple select demo script */
+        function selectMultipleInit() {
+            $(function () {
+            
+                // Mobiscroll Select initialization
+                $('#selectMultiple-demo').mobiscroll().select({
+                    theme: $('#theme').val(),      // Specify theme like: theme: 'ios' or omit setting to use default
+                    lang: $('#language').val(),    // Specify language like: lang: 'pl' or omit setting to use default
+                    display: $('#display').val(),  // Specify display mode like: display: 'bottom' or omit setting to use default
+                    mode: $('#mode').val(),        // More info about mode: http://docs.mobiscroll.com/2-17-0/select#!opt-mode
+                    minWidth: 200                  // More info about minWidth: http://docs.mobiscroll.com/2-17-0/select#!opt-minWidth
+                });
+            
+                $('#selectMultiple-show').click(function () {
+                    $('#selectMultiple-demo').mobiscroll('show');
+                    return false;
+                });
+            
+                $('#selectMultiple-clear').click(function () {
+                    $('#selectMultiple-demo').mobiscroll('clear');
+                    return false;
+                });
+                
+            });
+        }
+
+        </script>
+</head>
+<body>
+    <!-- ------------------------------------------------------------------ -->
+    <!-- Demo configurator markup START, ignore this in your implementation -->
+    <div class="header">
+        <h1>Mobiscroll</h1>
+    </div>
+    <div id="main">
+        <div>
+            <label for="theme">Theme</label>
+            <select name="theme" id="theme" class="settings">
+                <option value="">Default / Auto</option>
+                <option value="mobiscroll">Mobiscroll</option>
+            </select>
+        </div>
+        <div>
+            <label for="mode">Mode</label>
+            <select name="mode" id="mode" class="settings">
+                <option value="scroller">Scroller</option>
+                <option value="clickpick">Clickpick</option>
+                <option value="mixed">Mixed</option>
+            </select>
+        </div>
+        <div>
+            <label for="display">Display</label>
+            <select name="display" id="display" class="settings">
+                <option value="modal">Modal</option>
+                <option value="inline">Inline</option>
+                <option value="bubble">Bubble</option>
+                <option value="top">Top</option>
+                <option value="bottom">Bottom</option>
+            </select>
+        </div>
+        <div>
+            <label for="language">Language</label>
+            <select name="language" id="language" class="settings">
+                <option value="">English</option>
+            </select>
+        </div>
+        <div>
+            <label for="demo">Demo</label>
+            <select name="demo" id="demo" class="settings">
+                
+                <option value="selectBasic" selected>Basic usage</option>
+                <option value="selectGroupselect" >Group options</option>
+                <option value="selectMultiple" >Multiple select</option>
+            </select>
+        </div>
+    </div>
+    <!-- Demo configurator markup END -->
+    <!-- ------------------------------------------------------------------ -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Basic usage START -->
+    <div class="demo-wrapper demo-wrapper-selectBasic">
+        <select name="City" id="selectBasic-demo">
+            <option value="1">Atlanta</option>
+            <option value="2">Berlin</option>
+            <option value="3">Boston</option>
+            <option value="4">Chicago</option>
+            <option value="5">London</option>
+            <option value="6">Los Angeles</option>
+            <option value="7">New York</option>
+            <option value="8">Paris</option>
+            <option value="9">San Francisco</option>
+        </select>
+
+        <button id="selectBasic-clear">Clear</button>
+        <button id="selectBasic-show">Show</button>
+    </div>
+    <!-- Basic usage END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Group options START -->
+    <div class="demo-wrapper demo-wrapper-selectGroupselect">
+        <select id="selectGroupselect-demo">
+            <optgroup label="USA">
+                <option value="1">Atlanta</option>
+                <option value="2">Boston</option>
+                <option value="3">Chicago</option>
+                <option value="4">Los Angeles</option>
+                <option value="5">New York</option>
+                <option value="6">San Francisco</option>
+            </optgroup>
+            <optgroup label="UK">
+                <option value="7">Bath</option>
+                <option value="8">Bristol</option>
+                <option value="9">Cambridge</option>
+                <option value="10">London</option>
+                <option value="11">Leeds</option>
+                <option value="12">Manchester</option>
+                <option value="13">Newcastle</option>
+                <option value="14">Oxford</option>
+            </optgroup>
+            <optgroup label="China">
+                <option value="15">Beijing</option>
+                <option value="16">Chongqing</option>
+                <option value="17">Shanghai</option>
+                <option value="18">Shenzhen</option>
+                <option value="19">Tianjin</option>
+            </optgroup>
+        </select>
+
+        <button id="selectGroupselect-clear">Clear</button>
+        <button id="selectGroupselect-show">Show</button>
+    </div>
+    <!-- Group options END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+    <!-- ------------------------------------------------------------------------------- -->
+    <!-- Multiple select START -->
+    <div class="demo-wrapper demo-wrapper-selectMultiple">
+        <select name="Category" id="selectMultiple-demo" multiple>
+            <option value="1">Books</option>
+            <option value="2">Movies, Music & Games</option>
+            <option value="3" selected>Electronics & Computers</option>
+            <option value="4" selected>Home, Garden & Tools</option>
+            <option value="5">Health & Beauty</option>
+            <option value="6">Toys, Kids & Baby</option>
+            <option value="7">Clothing & Jewelry</option>
+            <option value="8">Sports & Outdoors</option>
+            <option value="9">Automotive & Industrial</option>
+        </select>
+
+        <button id="selectMultiple-clear">Clear</button>
+        <button id="selectMultiple-show">Show</button>
+    </div>
+    <!-- Multiple select END -->
+    <!-- ------------------------------------------------------------------------------- -->
+
+</body>
+
+</html>

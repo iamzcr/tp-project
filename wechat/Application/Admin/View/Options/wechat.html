@@ -1,0 +1,38 @@
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">微信设置</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form role="form" id="options-form">
+                        <div class="form-group">
+                            <label>token</label>
+                            <input class="form-control" name="wechat[token]" type="text" value="<{$token}>">
+                        </div>
+                        <div class="form-group">
+                            <label>appid</label>
+                            <input class="form-control" name="wechat[appid]" type="text" value="<{$appid}>">
+                        </div>
+                        <div class="form-group">
+                            <label>appsecret</label>
+                            <input class="form-control" name="wechat[appsecret]" type="text" value="<{$appsecret}>">
+                        </div>
+                        <div class="form-group">
+                            <label>appkey</label>
+                            <input class="form-control" name="wechat[appkey]" type="text" value="<{$appkey}>">
+
+                        </div>
+                        <button type="button" class="btn btn-default options-submit"
+                                data-url="<{:U('Admin/Options/wechat')}>">保存</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__PUBLIC__/Home/js/jquery.js"></script>
+<load href="__PUBLIC__/Admin/Js/options.js" />

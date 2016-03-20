@@ -1,0 +1,120 @@
+body,.page{
+    /*background-color: #ffffff;*/
+}
+.index_header_bg{
+    background-color: #ff7788;
+    height: 80%;
+    margin-top: 0px;
+    padding-top: 0px;
+}
+
+/**/
+.index_top{
+    border: none;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.top_one{width: 30%;float: left}
+.top_two{width: 35%;float: left}
+.top_two_image{margin-left: 50%}
+.top_two_image img{
+    width: 30px;height: 30px;
+}
+.top_one{
+    color: #ffffff;
+    text-align: center;
+    margin-left:35%;
+}
+
+.top_one_middle1,.top_one_middle2{
+    float: left;
+    border: 1px solid  #ffffff;
+    width:48%;text-align: center;font-size: 14px;
+}
+.top_one_middle1{
+    border-bottom-left-radius: 5px;
+    border-top-left-radius:5px;
+    background-color: #ffffff;
+    color: #ff7788;
+}
+.top_one_middle2{
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #ff7788;
+    color: #ffffff;
+}
+.index_top_midlle::before,.index_top_footer::before{
+    content: none;
+}
+/**/
+.index_image{
+    text-align: center
+}
+/**/
+.index_header_footer{
+    float: left;
+    width: 33.3333%;
+    text-align: center;
+    padding-bottom: 20px;
+}
+.index_header_footer p{line-height: 21px;}
+.index_header_footer p span{  font-size: 12px;color: #ffffff}
+.index_header_circle1 ,.index_header_circle2 ,.index_header_circle3{
+    font-size: 30px;
+}
+.index_header_circle1{color: #ef7da9;}
+.index_header_circle2{color: #94cc66;}
+.index_header_circle3{color: #ffb549;}
+
+/**/
+.section_button a img{
+    display: block;
+    height: 28px;
+    margin-right: 0.7em;
+    width: 28px;
+}
+.section_button_text{
+    width: 100%;
+}
+.section_button_two , .section_button_one{
+    width: 48%;
+    float: left;
+    text-align: center;
+    background-color: #fbfbfb;
+    color: #ff779b
+}
+.section_button a{
+    display: block;
+    text-align: center;
+}
+.index_section{
+    background-color: #fbfbfb;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    border-radius: 3px;
+    border: 1px solid #e4e4e4;
+}
+.index_section_one{
+    border-top:1px solid #e4e4e4 ;
+}
+
+/**/
+.index_replace{
+    text-align: center;
+    background-color: #f9f9f9;
+    border: none;
+    margin-bottom: 10px;
+    width: 180px;
+    margin: 0 auto;
+}
+.index_replace img{   padding-top: 10px;}
+.index_replace div{
+    line-height: 37px;
+    float: left;
+
+}

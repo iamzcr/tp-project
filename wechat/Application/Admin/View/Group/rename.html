@@ -1,0 +1,35 @@
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12" style="margin-top: 10px;">
+            <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+                <p>如果填写的是url，类型必须选择view</p>
+                <p>如果填写的是关键字，类型必须选择click</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">修改微信用户组</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form role="form" id="group-form">
+                        <input class="form-control" name="group[id]" value="<{$data.id}>" type="hidden">
+                        <input class="form-control" name="group[group_id]" value="<{$data.group_id}>" type="hidden">
+                        <div class="form-group">
+                            <label>名字</label>
+                            <input class="form-control" name="group[name]" value="<{$data.name}>" type="text">
+                        </div>
+                    </form>
+                    <button  data-url="<{:U('Admin/Group/rename')}>" class="btn btn-lg btn-success group-submit">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__PUBLIC__/Home/js/jquery.js"></script>
+<load href="__PUBLIC__/Admin/Js/group.js" />

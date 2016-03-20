@@ -1,0 +1,27 @@
+html,body {height: 100%;-webkit-tap-highlight-color: transparent;}
+body,.page { background-color: #fa807b;}
+.container { position: absolute; top: 0;right: 0;bottom: 0;left: 0;overflow: hidden;}
+.page {position: absolute;top: 0;right: 0; bottom: 0; left: 0; overflow-y: auto; -webkit-overflow-scrolling: touch;}
+.hd { padding: 2em 0;}
+.page_desc {text-align: center;  color: #fcb5bd;  font-size: 14px;}
+.bd.spacing {padding: 0 15px;}
+.bd.spacing_new {padding: 0 30px;}
+.page_title {text-align: center;font-size: 30px; color: #ffffff; font-weight: 400; margin: 0 15%;}
+.hd_middle{text-align : center;color:#fbada9;line-height:20px;}
+.check-index-button div{line-height:45px;}
+.result,.step{border:1px solid #ffffff}
+.result{float:left;color:#ffffff;margin-left:10%}
+.step{float:right;background-color: #ffffff;color:#fa807b;margin-right:10%}
+
+/*result.css*/
+.result-page{ background-color: #ffffff;}
+.result-title{color:#8a5159}
+.result-button{margin-top:100px;}
+.result-button a {background-color: #fa807b;color:#ffffff;border:1px solid #ffffff;width:85%}
+.result-text{
+    font-size: 12px;
+    line-height: 20px;
+    color: #ffffff;
+    background-color: #94cc66;
+}
+.weui_cells_access .weui_cell_ft::after{content: none}

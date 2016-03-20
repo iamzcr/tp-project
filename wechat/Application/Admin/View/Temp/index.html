@@ -1,0 +1,76 @@
+<div id="page-wrapper">
+
+    <div class="row">
+        <div class="col-lg-12" style="margin-top: 10px;">
+            <div class="alert alert-info">
+                <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+                <p>1、登录 <a href="https://mp.weixin.qq.com/" target="_blank">微信官方公众平台 <i class="fa fa-external-link fa-fw"></i></a></p>
+                <p>2、选择菜单：功能 --> 添加功能插件，申请模板消息使用权限</p>
+                <p>3、选择微信公众账号服务所处的行业（其他/其他 | 消费品/消费品）注暂定，每月可更改一次所选行业</p>
+                <p>4、在所选择行业的模板库中添加《通知</p>
+                <p>5、添加时候：在 我的模板 -->菜单中，复制对应模板ID添加到模板key字段中</p>
+                <p>6、若要取消模板消息，点击删除按钮即可</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">微信消息模板管理</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="btn-group" style="margin-bottom: 10px;">
+                <a class="btn btn-primary" href="<{:U('Temp/add')}>">添加</a>
+                <a class="btn btn-primary" href="<{:U('Temp/sys')}>">同步</a>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+
+                    <div class="dataTable_wrapper">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>模板key</th>
+                                <th>模板id</th>
+                                <th>模板标题</th>
+                                <th>创建时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="data" id="list" empty="暂时没有数据" >
+                                <tr class="odd gradeX">
+                                    <td><{$list.id}></td>
+                                    <td><{$list.template_key}></td>
+                                    <td><{$list.template_id}></td>
+                                    <td><{$list.title}></td>
+                                    <td><{$list.create_time|date="Y-m-d",###}></td>
+                                    <td>
+                                        <a class="btn btn-danger" href="<{:U('Temp/delete',array('temp_id'=>$list['temp_id']))}>">删除</a>
+                                        <a class="btn btn-primary  "href="<{:U('Temp/puts',array('temp_id'=>$list['temp_id']))}>">推送</a>
+                                    </td>
+                                </tr>
+                            </volist>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+</div>

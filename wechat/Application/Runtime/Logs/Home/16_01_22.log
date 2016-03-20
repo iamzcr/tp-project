@@ -1,0 +1,8 @@
+[ 2016-01-22T18:10:30+08:00 ] 192.168.33.2 /zcr/boohee/trunk/feisu_wechat/index.php?signature=a3db74a4d61ce037349d1ad4dc7744c554e380cc&timestamp=1453457435&nonce=717364003
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000035s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000992s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000823s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000970s ]
+

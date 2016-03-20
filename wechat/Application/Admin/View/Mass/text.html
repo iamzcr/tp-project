@@ -1,0 +1,26 @@
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1 class="page-header">文本群发</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <form id="mass-form" class="my-form">
+                <label for="exampleInputEmail1">群发组</label>
+                <select class="form-control" name="text[group_id]">
+                    <volist name="data" id="list" >
+                        <option value="<{$list.id}>"><{$list.name}></option>
+                    </volist>
+                </select>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">群发内容</label>
+                    <textarea   class="form-control"  id="exampleInputEmail1" name="text[content]"></textarea>
+                </div>
+            </form>
+            <button  data-url="<{:U('Admin/Mass/text')}>" class="btn btn-lg btn-success btn-block mass-submit">保存</button>
+        </div>
+    </div>
+</div>
+<script src="__PUBLIC__/Home/js/jquery.js"></script>
+<load href="__PUBLIC__/Admin/Js/mass.js" />

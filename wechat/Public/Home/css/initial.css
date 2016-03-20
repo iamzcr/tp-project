@@ -1,0 +1,66 @@
+body{
+    /*background:url("../img/u0.png") no-repeat fixed center;*/
+    background: #fa807b;
+    -moz-background-size:100% 100%; /* 老版本的 Firefox */
+    background-size:100% 100%;
+}
+.page_title {
+    text-align: center;
+    font-size: 18px;
+    color: #ffffff;
+    font-weight: 400;
+    padding-top:40px;
+    padding-bottom: 40px;
+    margin: 0 15%;
+}
+#initial-middle{
+    background: none;
+    border-top: none;
+    border-top: 1px solid #fc977a;
+
+}
+#initial-middle::before{
+    content: none;
+}
+.initial-header{
+    height: 30px;
+    line-height: 30px;
+}
+.initial-text{
+    color: #ffffff;
+    width: 45%;
+    float: left;
+    text-align: right;
+}
+.initial-title{
+    text-align: right;
+    width: 45%;
+    float: left;
+    padding-right: 10%;
+    color: #fdbcbc;
+}
+
+.initial-footer{
+    margin-top: 70px;
+    color: #ffffff;
+}
+.initial-footer p{
+    text-align: center;
+}
+.initial-footer p{
+    padding-bottom: 20px;
+}
+.initial-footer-btn{
+    color: #ffffff;
+    border:1px solid #ffffff;
+}
+.weui_cell::before{
+    border-top: 1px solid #fc977a;
+}
+.weui_cells{
+    margin-top: 0px;
+}
+.in-date{
+    border:none;color: #ffffff;text-align:right;background-color:#fa807b ;font-size: 16px;width:60%;
+}
+#sheet,#cycle{color:#ffffff}

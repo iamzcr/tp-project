@@ -1,0 +1,80 @@
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">微信用户管理</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="btn-group" style="margin-bottom: 10px;">
+                <a class="btn btn-primary" href="<{:U('User/sync')}>">同步</a>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+    <div class="row">
+
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+
+                    <div class="dataTable_wrapper">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>w_id</th>
+                                <th>open_id</th>
+                                <th>用户名</th>
+                                <th>用户组</th>
+                                <th>头像</th>
+                                <th>国家</th>
+                                <th>省份</th>
+                                <th>城市</th>
+                                <th>语言</th>
+                                <th>性别</th>
+                                <th>关注时间</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <volist name="data" id="list" empty="暂时没有数据" >
+                                <tr class="odd gradeX">
+                                    <td><{$list.w_id}></td>
+                                    <td><{$list.openid}></td>
+                                    <td><{$list.nickname}></td>
+                                    <td><{$list.groupid}></td>
+                                    <td><img width="40" src="<{$list.headimgurl}>"></td>
+                                    <td><{$list.country}></td>
+                                    <th><{$list.province}></th>
+                                    <td><{$list.city}></td>
+                                    <td><{$list.language}></td>
+                                    <td><if condition="($list.sex eq 1)">男
+                                        <else /> 女
+                                    </if></td>
+                                    <td><{$list.subscribe_time|date="Y-m-d",###}></td>
+                                    <td>
+                                        <a class="btn btn-success" href="<{:U('Admin/User/remark',array('w_id'=>$list['w_id']))}>">
+                                            设置备注
+                                        </a>
+                                        <a class="btn btn-danger" href="<{:U('Admin/User/remove',array('w_id'=>$list['w_id']))}>">
+                                            移动分组
+                                        </a>
+
+                                    </td>
+                                </tr>
+                            </volist>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+</div>

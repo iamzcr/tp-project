@@ -1,0 +1,35 @@
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">新增文本事件</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form role="form" id="text-form">
+                        <input type="hidden" name="response[msgtype]" value="text">
+                        <div class="form-group">
+                            <label>关键字</label>
+                            <input  class="form-control" type="text" name="response[keyword]">
+                        </div>
+                        <div class="form-group">
+                            <label>回复类型</label>
+                            <select class="form-control" name="response[msgreply]">
+                                <option value="text">文本</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>内容</label>
+                            <textarea  class="form-control"  name="response[content]"></textarea>
+                        </div>
+                    </form>
+                    <button type="button" class="btn btn-default text-submit">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="__PUBLIC__/Home/js/jquery.js"></script>
+<load href="__PUBLIC__/Admin/Js/response.js" />

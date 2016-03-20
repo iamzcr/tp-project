@@ -1,0 +1,8 @@
+验证签名未通过！get信息：signature : 190fe82208e175820953a8c9f59bc1134405508a , timestamp : 1453448724 , nonce : 1802396049 , post信息：oz7sqt08y4r9gZAq_WCQZB2VosWc关注我了！EventKey=,Ticket=gQGm8ToAAAAAAAAAASxodHRwOi8vd2VpeGluLnFxLmNvbS9xL3QweXlVOXZsOHEyTGUyWDlJbUFMAAIEic_hVgMEAAAAAA==验证签名未通过！get信息：signature : a08683097c329230fc4f4dcc78cc287bceb462d9 , timestamp : 1453448785 , nonce : 1319993031 , post信息：oz7sqt08y4r9gZAq_WCQZB2VosWc456get信息：signature : c51fdad380c681936c9673b2a1dde01c2385f828 , timestamp : 1453450255 , nonce : 1767125991 , post信息：事件类型：TEMPLATESENDJOBFINISHget信息：signature : 878d577af9beadf9d696dddfe0997a4b86260329 , timestamp : 1453450285 , nonce : 1824690654 , post信息：事件类型：TEMPLATESENDJOBFINISHget信息：signature : de1840a81ba88ec912726af95bf483ffcd818419 , timestamp : 1453451043 , nonce : 1990816533 , post信息：get信息：signature : 7ef557ce6bddd4343a502e0e2e0352f7c515118d , timestamp : 1453451081 , nonce : 108724131 , post信息：<xml>
+                                            <ToUserName><![CDATA[oz7sqt6ev434Ro66KwPF61CV1hNo]]></ToUserName>
+                                            <FromUserName><![CDATA[gh_d1724fef1e22]]></FromUserName>
+                                            <CreateTime>1453451076</CreateTime>
+                                            <MsgType><![CDATA[text]]></MsgType>
+                                            <Content><![CDATA[你发送的信息是：接收人：gh_d1724fef1e22,发送人:oz7sqt6ev434Ro66KwPF61CV1hNo,消息类型：text,消息内容：/::Q www.icity365.com]]></Content>
+                                            <FuncFlag>0</FuncFlag>
+                                            </xml>验证签名未通过！验证签名未通过！验证签名未通过！验证签名未通过！验证签名未通过！验证签名未通过！

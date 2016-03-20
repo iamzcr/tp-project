@@ -1,0 +1,1 @@
+[24-Sep-2015 17:59:06 PRC] PHP Fatal error:  Call to a member function where() on a non-object in /home2/yfcityne/public_html/wx/Application/Home/Controller/GroupController.class.php on line 18

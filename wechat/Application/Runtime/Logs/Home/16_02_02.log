@@ -1,0 +1,33 @@
+[ 2016-02-02T18:36:49+08:00 ] ::1 /zcr/boohee/trunk/feisu_wechat/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000038s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001142s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001246s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001410s ]
+NOTIC: [8] Undefined index: signature E:\xampp\htdocs\zcr\boohee\trunk\feisu_wechat\Application\Home\Controller\IndexController.class.php 第 47 行.
+NOTIC: [8] Undefined index: timestamp E:\xampp\htdocs\zcr\boohee\trunk\feisu_wechat\Application\Home\Controller\IndexController.class.php 第 48 行.
+NOTIC: [8] Undefined index: nonce E:\xampp\htdocs\zcr\boohee\trunk\feisu_wechat\Application\Home\Controller\IndexController.class.php 第 49 行.
+
+[ 2016-02-02T18:39:21+08:00 ] ::1 /zcr/boohee/trunk/feisu_wechat/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000037s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000614s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000833s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001021s ]
+NOTIC: [8] Undefined index: signature E:\xampp\htdocs\zcr\boohee\trunk\feisu_wechat\Application\Home\Controller\IndexController.class.php 第 47 行.
+NOTIC: [8] Undefined index: timestamp E:\xampp\htdocs\zcr\boohee\trunk\feisu_wechat\Application\Home\Controller\IndexController.class.php 第 48 行.
+NOTIC: [8] Undefined index: nonce E:\xampp\htdocs\zcr\boohee\trunk\feisu_wechat\Application\Home\Controller\IndexController.class.php 第 49 行.
+
+[ 2016-02-02T18:46:56+08:00 ] ::1 /zcr/boohee/trunk/feisu_wechat/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000031s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000951s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001179s ]
+NOTIC: [8] Undefined index: signature E:\xampp\htdocs\zcr\boohee\trunk\feisu_wechat\Application\Home\Controller\IndexController.class.php 第 47 行.
+NOTIC: [8] Undefined index: timestamp E:\xampp\htdocs\zcr\boohee\trunk\feisu_wechat\Application\Home\Controller\IndexController.class.php 第 48 行.
+NOTIC: [8] Undefined index: nonce E:\xampp\htdocs\zcr\boohee\trunk\feisu_wechat\Application\Home\Controller\IndexController.class.php 第 49 行.
+
